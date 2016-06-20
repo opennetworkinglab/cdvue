@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="com.thoughtworks.qdox:qdox:2.0-M3" type="repository">
+    <properties maven-id="com.thoughtworks.qdox:qdox:2.0-M3" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/lib/qdox-2.0-M3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>
