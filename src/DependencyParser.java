@@ -77,21 +77,24 @@ public class DependencyParser
         }
 
         if (isComponent) {
-
             List<String> lines = new ArrayList<>();
+            List<JavaAnnotation> compiledAnnotations = new ArrayList<>();
             List<JavaField> fields = javaClass.getFields();
 
             System.out.println("The class has: " + fields.size() + " fields.");
 
-            fields.forEach(field -> processField(lines, javaClass, field));
+            fields.forEach(field -> processField(lines, compiledAnnotations, javaClass, field));
             if (!lines.isEmpty())
             {
                 writeCatalog(javaClass, lines);
+                jsonObject.put(javaClass.getName(), javaClass);
+                jsonObject.put(javaClass.getName() + " annotations", compiledAnnotations);
+                testJSON();
             }
         }
     }
 
-    private void processField(List<String> lines, JavaClass javaClass, JavaField field)
+    private void processField(List<String> lines, List<JavaAnnotation> jas, JavaClass javaClass, JavaField field)
     {
         System.out.println("");
         System.out.println("Processing field.");
@@ -99,7 +102,10 @@ public class DependencyParser
         List<JavaAnnotation> annotations = field.getAnnotations();
 
         System.out.println("The field " + field.getType().getName() + " has " + annotations.size() + " annotations.");
-        annotations.forEach(ja -> lines.add(ja.getType().getName()));
+        annotations.forEach(ja -> {
+            lines.add(ja.getType().getName());
+            jas.add(ja);
+        });
     }
 
     private void writeCatalog(JavaClass javaClass, List<String> lines) {
@@ -124,36 +130,9 @@ public class DependencyParser
         }
     }
 
-    // TODO: Stuff below is very much hack-ish and should be redone; it works for now though.
-
-    private String description(JavaAnnotation annotation) {
-        String description = (String) annotation.getNamedParameter("label");
-        return description.replaceAll("\" \\+ \"", "")
-                .replaceFirst("^[^\"]*\"", "").replaceFirst("\"$", "");
+    private void testJSON()
+    {
+        JSONInspector j = new JSONInspector(jsonObject);
+        System.out.println(j.toString("AppComponent"));
     }
-
-    private String type(JavaField field) {
-        String ft = field.getType().getName().toUpperCase();
-        return ft.equals("INT") ? "INTEGER" : ft;
-    }
-
-    private String defaultValue(JavaClass javaClass, JavaField field,
-                                JavaAnnotation annotation) {
-        String ft = field.getType().getName().toLowerCase();
-        String defValueName = ft.equals("boolean") ? "boolValue" :
-                ft.equals("string") ? "value" : ft + "Value";
-        Object dv = annotation.getNamedParameter(defValueName);
-        return dv == null ? "" : expand(javaClass, dv.toString());
-    }
-
-    private String stripQuotes(String string) {
-        return string.trim().replaceFirst("^[^\"]*\"", "").replaceFirst("\"$", "");
-    }
-
-    private String expand(JavaClass javaClass, String value) {
-        JavaField field = javaClass.getFieldByName(value);
-        return field == null ? stripQuotes(value) :
-                stripQuotes(field.getCodeBlock().replaceFirst(".*=", "").replaceFirst(";$", ""));
-    }
-
 }
