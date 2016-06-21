@@ -1,19 +1,26 @@
 /**
  * Created by parthpendurkar on 6/17/16.
  */
-import com.yworks.yfiles.geometry.RectD;
-import com.yworks.yfiles.graph.IGraph;
-import com.yworks.yfiles.graph.styles.ShinyPlateNodeStyle;
-import com.yworks.yfiles.view.GraphComponent;
-import com.yworks.yfiles.view.input.GraphEditorInputMode;
 
-import javax.swing.*;
-import java.awt.*;
-//package sample;
+import java.util.Scanner;
 
 public class DependencyMapper {
 
+    public void processFile(String path) throws Exception
+    {
+        DependencyParser p = new DependencyParser(path);
+        try {
+            System.out.println("Executing.");
+            p.execute();
+        }
+        catch (Exception e) {
+            System.out.println("Execution failed.");
+            e.printStackTrace();
+        }
+    }
+
     public DependencyMapper() {
+        /*
         JFrame frame = new JFrame("Hello! yFiles for Java.");
         GraphComponent graphComponent = new GraphComponent();
         ShinyPlateNodeStyle nodeStyle = new ShinyPlateNodeStyle();
@@ -36,9 +43,23 @@ public class DependencyMapper {
         graph.createNode(new RectD(150,150,100,100), nodeStyle);
         graph.createNode(new RectD(250,250,100,100), nodeStyle);
         graphComponent.setInputMode(new GraphEditorInputMode());
+        */
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(DependencyMapper::new);
+        //SwingUtilities.invokeLater(DependencyMapper::new);
+        DependencyMapper m = new DependencyMapper();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Input the path of the java file:");
+        String path = sc.nextLine();
+        try
+        {
+            m.processFile(path);
+        }
+        catch (Exception e)
+        {
+            System.out.println("Attempting to process file");
+            e.printStackTrace();
+        }
     }
 }
