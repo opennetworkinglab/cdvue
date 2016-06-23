@@ -57,18 +57,24 @@ public class DependencyParser
 
         List<JavaAnnotation> classAnnotations = javaClass.getAnnotations();
         boolean isComponent = false;
+        boolean isService = false;
         if (!classAnnotations.isEmpty())
         {
             for (JavaAnnotation ja : classAnnotations)
             {
-                if (ja.getType().getName().equals("Component"))
+                String aName = ja.getType().getName();
+                if (aName.equals("Component"))
                 {
                     isComponent = true;
                 }
+                else if (aName.equals("Service"))
+                {
+                    isService = true;
+                }
             }
-            if (!isComponent)
+            if (!(isComponent || isService))
             {
-                System.out.println("The class has annotations, but none of them are Component");
+                System.out.println("The class has " + classAnnotations.size() + " annotations, but none of them are Component nor Service.");
             }
         }
         else
@@ -76,20 +82,25 @@ public class DependencyParser
             System.out.println("This class has no annotations.");
         }
 
-        if (isComponent) {
+        if (isComponent || isService) {
+            System.out.println("The class has " + classAnnotations.size() + " annotations, and one of them is either Component or Service.");
+
             List<String> lines = new ArrayList<>();
-            List<JavaAnnotation> compiledAnnotations = new ArrayList<>();
+            List<JavaAnnotation> fieldAnnotations = new ArrayList<>();
             List<JavaField> fields = javaClass.getFields();
 
             System.out.println("The class has: " + fields.size() + " fields.");
 
-            fields.forEach(field -> processField(lines, compiledAnnotations, javaClass, field));
+            fields.forEach(field -> processField(lines, fieldAnnotations, javaClass, field));
             if (!lines.isEmpty())
             {
                 writeCatalog(javaClass, lines);
                 jsonObject.put(javaClass.getName(), javaClass);
-                jsonObject.put(javaClass.getName() + " annotations", compiledAnnotations);
-                testJSON();
+                jsonObject.put(javaClass.getName() + " has component", isComponent);
+                jsonObject.put(javaClass.getName() + " has service", isService);
+                jsonObject.put(javaClass.getName() + " class annotations", classAnnotations);
+                jsonObject.put(javaClass.getName() + " annotations", fieldAnnotations);
+                testJSON("AppComponent");
             }
         }
     }
@@ -107,6 +118,8 @@ public class DependencyParser
             jas.add(ja);
         });
     }
+
+    // TODO: Make write catalog log everything in the JSON as well
 
     private void writeCatalog(JavaClass javaClass, List<String> lines) {
         System.out.println("");
@@ -130,9 +143,9 @@ public class DependencyParser
         }
     }
 
-    private void testJSON()
+    private void testJSON(String className)
     {
         JSONInspector j = new JSONInspector(jsonObject);
-        System.out.println(j.toString("AppComponent"));
+        System.out.println(j.toString(className));
     }
 }
