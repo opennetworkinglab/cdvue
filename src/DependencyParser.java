@@ -4,6 +4,7 @@
 
 import com.thoughtworks.qdox.JavaProjectBuilder;
 import com.thoughtworks.qdox.model.*;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.io.File;
@@ -24,12 +25,12 @@ public class DependencyParser
     */
 
     private String path;
-    private JSONObject jsonObject;
+    private JSONArray jsonObjects;
 
     public DependencyParser(String path)
     {
         this.path = path;
-        jsonObject = new JSONObject();
+        jsonObjects = new JSONArray();
     }
 
     public void execute() throws Exception
@@ -42,7 +43,7 @@ public class DependencyParser
         }
         catch (Exception e)
         {
-            System.out.println("Couldn't get classes");
+            System.out.println("Couldn't find any classes");
             e.printStackTrace();
             throw e;
         }
@@ -51,11 +52,12 @@ public class DependencyParser
     private void processClass(JavaClass javaClass)
     {
         System.out.println("");
-        System.out.println("Processing class.");
+        System.out.println("Processing class: " + javaClass.getFullyQualifiedName());
 
         List<JavaAnnotation> classAnnotations = javaClass.getAnnotations();
         boolean isComponent = false;
         boolean isService = false;
+
         if (!classAnnotations.isEmpty())
         {
             for (JavaAnnotation ja : classAnnotations)
@@ -84,34 +86,37 @@ public class DependencyParser
             System.out.println("The class has " + classAnnotations.size() + " annotations, and one of them is either Component or Service.");
 
             List<String> lines = new ArrayList<>();
-            List<JavaAnnotation> fieldAnnotations = new ArrayList<>();
+            List<JavaField> fieldsWithRefAnns = new ArrayList<>();
             List<JavaClass> implementedClasses = javaClass.getImplementedInterfaces();
             List<JavaField> fields = javaClass.getFields();
 
             System.out.println("The class has: " + fields.size() + " fields.");
 
-            fields.forEach(field -> processField(lines, fieldAnnotations, javaClass, field));
+            fields.forEach(field -> processField(lines, fieldsWithRefAnns, javaClass, field));
 
-            jsonObject.put(javaClass.getName(), javaClass);
-            jsonObject.put(javaClass.getName() + " has component", isComponent);
-            jsonObject.put(javaClass.getName() + " has service", isService);
-            jsonObject.put(javaClass.getName() + " class annotations", classAnnotations);
-            jsonObject.put(javaClass.getName() + " implemented classes", implementedClasses);
-            jsonObject.put(javaClass.getName() + " annotations", fieldAnnotations);
+            JSONObject jsonObject = new JSONObject();
+            String fullyClassifiedName = javaClass.getFullyQualifiedName();
+
+            jsonObject.put("class name", fullyClassifiedName);
+            jsonObject.put(fullyClassifiedName, javaClass);
+            jsonObject.put(fullyClassifiedName + ":hc", isComponent);
+            jsonObject.put(fullyClassifiedName + ":hs", isService);
+            jsonObject.put(fullyClassifiedName + ":ca", classAnnotations);
+            jsonObject.put(fullyClassifiedName + ":ic", implementedClasses);
+            jsonObject.put(fullyClassifiedName + ":f", fieldsWithRefAnns);
 
             if (!lines.isEmpty())
             {
                 writeCatalog(javaClass, lines);
-
-                jsonObject.put(javaClass.getName() + " annotations", fieldAnnotations);
             }
 
-            testJSON(javaClass.getName());
+            jsonObjects.add(jsonObject);
+            //testJSON(javaClass.getFullyQualifiedName());
 
         }
     }
 
-    private void processField(List<String> lines, List<JavaAnnotation> jas, JavaClass javaClass, JavaField field)
+    private void processField(List<String> lines, List<JavaField> jas, JavaClass javaClass, JavaField field)
     {
         System.out.println("");
         System.out.println("Processing field.");
@@ -120,12 +125,13 @@ public class DependencyParser
 
         System.out.println("The field " + field.getType().getName() + " has " + annotations.size() + " annotations.");
         annotations.forEach(ja -> {
-            lines.add(ja.getType().getName());
-            jas.add(ja);
+            if (ja.getType().getName().equals("Reference"))
+            {
+                lines.add(ja.getType().getName());
+                jas.add(field);
+            }
         });
     }
-
-    // TODO: Make write catalog log everything in the JSON as well
 
     private void writeCatalog(JavaClass javaClass, List<String> lines) {
         System.out.println("");
@@ -153,7 +159,7 @@ public class DependencyParser
 
     private void testJSON(String className)
     {
-        JSONInspector j = new JSONInspector(jsonObject);
+        JSONInspector j = new JSONInspector((JSONObject) jsonObjects.get(0));
         System.out.println(j.toString(className));
     }
 }
