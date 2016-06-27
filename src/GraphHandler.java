@@ -1,4 +1,3 @@
-import com.thoughtworks.qdox.model.JavaAnnotation;
 import com.thoughtworks.qdox.model.JavaClass;
 import com.thoughtworks.qdox.model.JavaField;
 import org.json.simple.JSONArray;
@@ -31,9 +30,6 @@ public class GraphHandler
             populateServiceMap(j);
             populateComponentMap(j);
         }
-
-        System.out.println(serviceToComponents.size());
-        System.out.println(componentToReferences.size());
     }
 
     private void populateServiceMap(JSONObject j) {
@@ -51,7 +47,7 @@ public class GraphHandler
                 serviceToComponents.put(fullICName, currentForIC);
             }
             // TODO: Check if the @Service tag itself has attributes here and add class names accordingly.
-            // TODO: Take care of services that aren't implemented by any classes (eg. InterfaceC should point to an empty set
+            // TODO: Take care of services that aren't implemented by any classes (eg. InterfaceC should point to an empty set)
         }
     }
 
