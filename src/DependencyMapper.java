@@ -6,12 +6,15 @@ import java.util.Scanner;
 
 public class DependencyMapper {
 
-    public void processFile(String path) throws Exception
-    {
+    private void processFile(String path) throws Exception {
         DependencyParser p = new DependencyParser(path);
         try {
             System.out.println("Executing.");
             p.execute();
+
+            System.out.println("Execution complete. JSON's compiled.");
+            System.out.println("Testing...");
+            p.test();
         }
         catch (Exception e) {
             System.out.println("Execution failed.");
@@ -49,15 +52,13 @@ public class DependencyMapper {
         //SwingUtilities.invokeLater(DependencyMapper::new);
         DependencyMapper m = new DependencyMapper();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Input the path of the java file:");
+        System.out.println("Input the path to the java file(s):");
         String path = sc.nextLine();
-        try
-        {
+        try {
             m.processFile(path);
         }
-        catch (Exception e)
-        {
-            System.out.println("Attempting to process file");
+        catch (Exception e) {
+            System.out.println("Could not process files...");
             e.printStackTrace();
         }
     }
