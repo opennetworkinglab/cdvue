@@ -22,9 +22,12 @@ public class GraphHandler
     }
 
     public void prepareData() {
+        JSONInspector jsonInspector = new JSONInspector();
+
         for (int i = 0; i < jsonObjects.size(); i++)
         {
             JSONObject j = (JSONObject) jsonObjects.get(i);
+            jsonInspector.toString(j);
             populateServiceMap(j);
             populateComponentMap(j);
         }

@@ -9,14 +9,14 @@ import java.util.List;
  * Created by parthpendurkar on 6/21/16.
  */
 public class JSONInspector {
-    private JSONObject jsonObject;
 
-    public JSONInspector(JSONObject jsonObject)
-    {
-        this.jsonObject = jsonObject;
+    public JSONInspector() {
+
     }
 
-    public String toString(String className) {
+    public String toString(JSONObject jsonObject) {
+        String className = (String) jsonObject.get("class name");
+
         boolean hCA = (boolean) jsonObject.get(className + ":hc"); //has component
         boolean hSA = (boolean) jsonObject.get(className + ":hs"); //has service
         boolean iI = (boolean) jsonObject.get(className + ":ii"); //is interface
