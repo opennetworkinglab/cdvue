@@ -1,9 +1,8 @@
+import java.util.Scanner;
+
 /**
  * Created by parthpendurkar on 6/17/16.
  */
-
-import java.util.Scanner;
-
 public class DependencyMapper {
 
     private void processFile(String path) throws Exception {

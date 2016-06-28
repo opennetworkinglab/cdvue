@@ -1,7 +1,3 @@
-/**
- * Created by parthpendurkar on 6/20/16.
- */
-
 import com.thoughtworks.qdox.JavaProjectBuilder;
 import com.thoughtworks.qdox.model.*;
 import org.json.simple.JSONArray;
@@ -14,6 +10,9 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by parthpendurkar on 6/20/16.
+ */
 public class DependencyParser {
     private String path;
     private JSONArray jsonObjects;
