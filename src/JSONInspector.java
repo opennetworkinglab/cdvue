@@ -14,7 +14,7 @@ public class JSONInspector {
 
     }
 
-    public String toString(JSONObject jsonObject) {
+    public void toString(JSONObject jsonObject) {
         String className = (String) jsonObject.get("class name");
 
         boolean hCA = (boolean) jsonObject.get(className + ":hc"); //has component
@@ -41,7 +41,7 @@ public class JSONInspector {
         }
 
         System.out.println("");
-        return "JSON toString for " + className + " completed.";
+        System.out.println("JSON toString for " + className + " completed.");
     }
 
 }

@@ -129,6 +129,6 @@ public class DependencyParser {
 
     public void test() {
         GraphHandler g = new GraphHandler(jsonObjects);
-        g.prepareData();
+        g.prepareGraph();
     }
 }
