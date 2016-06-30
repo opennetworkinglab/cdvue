@@ -1,11 +1,30 @@
+/*
+ * Copyright 2015-present Open Networking Laboratory
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import java.util.Scanner;
 
 /**
- * Created by parthpendurkar on 6/17/16.
+ * Class that runs the Dependency Mapper Tool.
+ *
+ * @author Parth Pendurkar
+ * @version 1.0
  */
 public class DependencyMapper {
 
-    private void processFile(String path) throws Exception {
+    private void processDirectory(String path) throws Exception {
         DependencyParser p = new DependencyParser(path);
         try {
             System.out.println("Executing.");
@@ -27,7 +46,7 @@ public class DependencyMapper {
         System.out.println("Input the path to the java file(s):");
         String path = sc.nextLine();
         try {
-            m.processFile(path);
+            m.processDirectory(path);
         }
         catch (Exception e) {
             System.out.println("Could not process files...");
