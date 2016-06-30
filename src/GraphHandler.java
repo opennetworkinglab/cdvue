@@ -1,23 +1,24 @@
 import com.thoughtworks.qdox.model.JavaClass;
 import com.thoughtworks.qdox.model.JavaField;
+import com.yworks.yfiles.algorithms.Graph;
 import com.yworks.yfiles.geometry.RectD;
-import com.yworks.yfiles.graph.IGraph;
-import com.yworks.yfiles.graph.INode;
-import com.yworks.yfiles.graph.LayoutUtilities;
+import com.yworks.yfiles.graph.*;
 import com.yworks.yfiles.graph.labelmodels.InteriorLabelModel;
 import com.yworks.yfiles.graph.styles.IArrow;
 import com.yworks.yfiles.graph.styles.PolylineEdgeStyle;
 import com.yworks.yfiles.graph.styles.ShinyPlateNodeStyle;
 import com.yworks.yfiles.layout.circular.CircularLayout;
+import com.yworks.yfiles.utils.IList;
 import com.yworks.yfiles.utils.IListEnumerable;
 import com.yworks.yfiles.view.GraphComponent;
-import com.yworks.yfiles.view.input.GraphEditorInputMode;
-import com.yworks.yfiles.view.input.GraphViewerInputMode;
+import com.yworks.yfiles.view.HighlightIndicatorManager;
+import com.yworks.yfiles.view.input.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import javax.swing.*;
 import java.awt.*;
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.List;
 
@@ -27,6 +28,7 @@ import java.util.List;
 public class GraphHandler
 {
     private JSONArray jsonObjects;
+    private GraphComponent graphComponent;
     private Map<String, Set<String>> serviceToComponents;
     private Map<String, Set<String>> componentToReferences;
     private Map<String, Boolean> isolatedNodes;
@@ -39,6 +41,7 @@ public class GraphHandler
 
     public GraphHandler(JSONArray jsonObjects) {
         this.jsonObjects = jsonObjects;
+        graphComponent = new GraphComponent();
         serviceToComponents = new HashMap<>();
         componentToReferences = new HashMap<>();
         isolatedNodes = new HashMap<>();
@@ -50,7 +53,7 @@ public class GraphHandler
 
         linkedNodeStyle.setPaint(Color.GREEN);
         linkedNodeStyle.setShadowDrawingEnabled(true);
-        isolatedNodeStyle.setPaint(Color.RED);
+        isolatedNodeStyle.setPaint(Color.CYAN);
         isolatedNodeStyle.setShadowDrawingEnabled(true);
         interfaceNodeStyle.setPaint(Color.ORANGE);
         interfaceNodeStyle.setShadowDrawingEnabled(true);
@@ -101,11 +104,17 @@ public class GraphHandler
         }
     }
 
-    public void prepareGraph()
-    {
+    public void prepareGraph() {
         prepareData();
         JFrame frame = new JFrame("- Dependency Mapper -");
-        GraphComponent graphComponent = new GraphComponent();
+        GraphViewerInputMode graphViewerInputMode = new GraphViewerInputMode();
+        graphViewerInputMode.setClickableItems(GraphItemTypes.NODE);
+        graphViewerInputMode.getItemHoverInputMode().setEnabled(true);
+        graphViewerInputMode.getItemHoverInputMode().setHoverItems(GraphItemTypes.EDGE.or(GraphItemTypes.NODE));
+        graphViewerInputMode.getItemHoverInputMode().setInvalidItemsDiscardingEnabled(false);
+        //graphViewerInputMode.getItemHoverInputMode().addHoveredItemChangedListener(this::onHoveredItemChanged);
+        graphViewerInputMode.addItemClickedListener(this::onItemClicked);
+        graphViewerInputMode.getClickInputMode().addClickedListener(this::onNoItemClicked);
 
         graphComponent.getGraph().getNodeDefaults().setStyle(isolatedNodeStyle);
         frame.setSize(800, 800);
@@ -120,7 +129,76 @@ public class GraphHandler
         finishServiceNodeConnections(graph);
         LayoutUtilities.applyLayout(graph, new CircularLayout());
 
-        graphComponent.setInputMode(new GraphViewerInputMode());
+        graphComponent.setInputMode(graphViewerInputMode);
+    }
+
+    private void onHoveredItemChanged(Object sender, HoveredItemChangedEventArgs hoveredItemChangedEventArgs) {
+        if (hoveredItemChangedEventArgs.getItem() != null) {
+            HighlightIndicatorManager manager = graphComponent.getHighlightIndicatorManager();
+            manager.clearHighlights();
+
+            IModelItem newItem = hoveredItemChangedEventArgs.getItem();
+            if (newItem != null)
+            {
+                if (newItem instanceof INode)
+                {
+                    Set<ILookup> toBeHighlighted = new HashSet<>();
+                    toBeHighlighted = highlightOutgoingNodes(newItem, toBeHighlighted);
+                    for (ILookup item : toBeHighlighted)
+                        manager.addHighlight(item);
+                } else if (newItem instanceof IEdge)
+                {
+                    IEdge edge = (IEdge) newItem;
+                    manager.addHighlight(newItem);
+                    manager.addHighlight(edge.getSourceNode());
+                    manager.addHighlight(edge.getTargetNode());
+                }
+            }
+        }
+    }
+
+    private void onItemClicked(Object sender, ItemClickedEventArgs e) {
+        HighlightIndicatorManager manager = graphComponent.getHighlightIndicatorManager();
+        manager.clearHighlights();
+
+        if (!e.isHandled() && e.getItem() instanceof INode) {
+            INode node = (INode) e.getItem();
+            this.graphComponent.setCurrentItem(node);
+            Set<ILookup> toBeHighlighted = new HashSet<>();
+            toBeHighlighted = highlightOutgoingNodes(node, toBeHighlighted);
+            for (ILookup item : toBeHighlighted) {
+                manager.addHighlight(item);
+            }
+        }
+    }
+
+    private void onNoItemClicked(Object sender, ClickEventArgs c) {
+        if (this.graphComponent.getGraphModelManager().hitElementsAt(c.getLocation()).stream().count() == 0) {
+            HighlightIndicatorManager manager = graphComponent.getHighlightIndicatorManager();
+            manager.clearHighlights();
+            c.setHandled(true);
+        }
+    }
+
+    private Set highlightOutgoingNodes(IModelItem item, Set<ILookup> oldToBeHighlighted) {
+        Set<ILookup> toBeHighlighted = new HashSet<>();
+        INode node = (INode) item;
+        if (!oldToBeHighlighted.contains(node))
+            toBeHighlighted.add(node);
+        IListEnumerable edges = graphComponent.getGraph().outEdgesAt(node);
+        ArrayList<ILookup> parsedEdges = new ArrayList<>();
+        for (Object e : edges) {
+            if (!oldToBeHighlighted.contains(e))
+                parsedEdges.add((IEdge) e);
+        }
+
+        for (Object e : parsedEdges) {
+            toBeHighlighted.add((IEdge) e);
+            toBeHighlighted.addAll(oldToBeHighlighted);
+            toBeHighlighted.addAll(highlightOutgoingNodes(((IEdge) e).getTargetNode(), toBeHighlighted));
+        }
+
+        return toBeHighlighted;
     }
 
     private void setupIsolatedNodes(IGraph graph) {
