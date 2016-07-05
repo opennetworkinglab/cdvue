@@ -3,13 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="36ae5c05-d34c-4c0e-ba70-1c338d3c21ee" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-<<<<<<< HEAD
-=======
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DependencyMapper.java" afterPath="$PROJECT_DIR$/src/DependencyMapper.java" />
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DependencyParser.java" afterPath="$PROJECT_DIR$/src/DependencyParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GraphHandler.java" afterPath="$PROJECT_DIR$/src/GraphHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/JSONInspector.java" afterPath="$PROJECT_DIR$/src/JSONInspector.java" />
     </list>
     <ignored path="Component Dependency Mapper.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,40 +28,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DependencyMapper.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DependencyMapper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DependencyMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="300">
-              <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+            <state relative-caret-position="315">
+              <caret line="35" column="9" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
               <folding>
                 <marker date="1467327401000" expanded="false" signature="0:2" ph="/**...*/" />
-=======
-            <state relative-caret-position="315">
-              <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#1723#0" expanded="true" />
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DependencyParser.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DependencyParser.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DependencyParser.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="239">
-              <caret line="106" column="43" selection-start-line="106" selection-start-column="43" selection-end-line="106" selection-end-column="43" />
+            <state relative-caret-position="330">
+              <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
               <folding />
-=======
-            <state relative-caret-position="524">
-              <caret line="188" column="1" selection-start-line="188" selection-start-column="1" selection-end-line="188" selection-end-column="1" />
-              <folding>
-                <element signature="e#0#7915#0" expanded="true" />
-                <element signature="imports" expanded="true" />
-              </folding>
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
             </state>
           </provider>
         </entry>
@@ -76,18 +53,9 @@
       <file leaf-file-name="JSONInspector.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/JSONInspector.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
             <state relative-caret-position="705">
               <caret line="66" column="31" selection-start-line="66" selection-start-column="31" selection-end-line="66" selection-end-column="31" />
               <folding />
-=======
-            <state relative-caret-position="524">
-              <caret line="66" column="1" selection-start-line="66" selection-start-column="1" selection-end-line="66" selection-end-column="1" />
-              <folding>
-                <element signature="e#0#3040#0" expanded="true" />
-                <element signature="imports" expanded="true" />
-              </folding>
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
             </state>
           </provider>
         </entry>
@@ -95,18 +63,9 @@
       <file leaf-file-name="GraphHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GraphHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="75">
+            <state relative-caret-position="1245">
               <caret line="119" column="9" selection-start-line="119" selection-start-column="9" selection-end-line="119" selection-end-column="9" />
               <folding />
-=======
-            <state relative-caret-position="420">
-              <caret line="43" column="26" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#16497#0" expanded="true" />
-                <element signature="imports" expanded="true" />
-              </folding>
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
             </state>
           </provider>
         </entry>
@@ -136,11 +95,8 @@
         <option value="$PROJECT_DIR$/testFilesForCDM/src/ClassX.java" />
         <option value="$PROJECT_DIR$/../GraphViewerDemo.java" />
         <option value="$PROJECT_DIR$/src/DependencyMapper.java" />
-<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/JSONInspector.java" />
         <option value="$PROJECT_DIR$/src/DependencyParser.java" />
-=======
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
         <option value="$PROJECT_DIR$/src/GraphHandler.java" />
         <option value="$PROJECT_DIR$/src/JSONInspector.java" />
         <option value="$PROJECT_DIR$/src/DependencyParser.java" />
@@ -190,13 +146,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-<<<<<<< HEAD
       <pane id="PackagesPane">
-=======
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="ProjectPane">
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
         <subPane>
           <PATH>
             <PATH_ELEMENT>
@@ -206,7 +156,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -245,20 +194,8 @@
           </PATH>
         </subPane>
       </pane>
-<<<<<<< HEAD
+      <pane id="Scope" />
       <pane id="Scratches" />
-=======
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Component Dependency Mapper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -276,7 +213,6 @@
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="FullScreen" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -744,12 +680,12 @@
       <workItem from="1467271242895" duration="220000" />
       <workItem from="1467312240525" duration="1631000" />
       <workItem from="1467318427782" duration="309000" />
-<<<<<<< HEAD
       <workItem from="1467324496812" duration="7122000" />
       <workItem from="1467336993253" duration="456000" />
       <workItem from="1467337524359" duration="381000" />
       <workItem from="1467737967832" duration="1615000" />
       <workItem from="1467741552289" duration="2683000" />
+      <workItem from="1467745325114" duration="104000" />
     </task>
     <task id="LOCAL-00001" summary="small json dictionary fix">
       <created>1467740867647</created>
@@ -757,9 +693,6 @@
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
       <updated>1467740867647</updated>
-=======
-      <workItem from="1467324496812" duration="6107000" />
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
     </task>
     <task id="LOCAL-00002" summary="small json dictionary fix">
       <created>1467740894874</created>
@@ -772,11 +705,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-<<<<<<< HEAD
-    <option name="totallyTimeSpent" value="114407000" />
-=======
-    <option name="totallyTimeSpent" value="108257000" />
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
+    <option name="totallyTimeSpent" value="114511000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -797,17 +726,10 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32866043" sideWeight="0.50646204" order="7" side_tool="true" content_ui="tabs" />
-<<<<<<< HEAD
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25856698" sideWeight="0.49353796" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25700936" sideWeight="0.49353796" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-=======
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25856698" sideWeight="0.49353796" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10823909" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -843,11 +765,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-<<<<<<< HEAD
       <option name="time" value="31" />
-=======
-      <option name="time" value="25" />
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -869,11 +787,7 @@
         <state relative-caret-position="0">
           <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
           <folding>
-<<<<<<< HEAD
             <marker date="1467327401000" expanded="false" signature="0:2" ph="/**...*/" />
-=======
-            <element signature="e#0#1723#0" expanded="true" />
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
           </folding>
         </state>
       </provider>
@@ -882,14 +796,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-<<<<<<< HEAD
           <folding />
-=======
-          <folding>
-            <element signature="e#0#7915#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
         </state>
       </provider>
     </entry>
@@ -898,11 +805,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-<<<<<<< HEAD
             <marker date="1467327401000" expanded="false" signature="0:2" ph="/**...*/" />
-=======
-            <element signature="e#0#1723#0" expanded="true" />
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
           </folding>
         </state>
       </provider>
@@ -919,11 +822,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-<<<<<<< HEAD
             <marker date="1467327401000" expanded="false" signature="0:2" ph="/**...*/" />
-=======
-            <element signature="e#0#1723#0" expanded="true" />
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
           </folding>
         </state>
       </provider>
@@ -940,11 +839,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-<<<<<<< HEAD
             <marker date="1467327401000" expanded="false" signature="0:2" ph="/**...*/" />
-=======
-            <element signature="e#0#1723#0" expanded="true" />
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
           </folding>
         </state>
       </provider>
@@ -961,11 +856,7 @@
         <state relative-caret-position="0">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
-<<<<<<< HEAD
             <marker date="1467327401000" expanded="false" signature="0:2" ph="/**...*/" />
-=======
-            <element signature="e#0#1723#0" expanded="true" />
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
           </folding>
         </state>
       </provider>
@@ -982,11 +873,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-<<<<<<< HEAD
             <marker date="1467327401000" expanded="false" signature="0:2" ph="/**...*/" />
-=======
-            <element signature="e#0#1723#0" expanded="true" />
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
           </folding>
         </state>
       </provider>
@@ -1082,16 +969,6 @@
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-=======
-    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/impl/DefaultJavaAnnotation.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="19" column="60" selection-start-line="19" selection-start-column="60" selection-end-line="19" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
     <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/impl/DefaultJavaClass.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1190,34 +1067,22 @@
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/src.zip!/java/lang/Iterable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-=======
-    <entry file="file://$PROJECT_DIR$/../GraphViewerDemo.java" />
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/src.zip!/java/lang/Iterable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
           <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../yFiles-for-Java-Complete-3.0.0.1-Evaluation/demos/src/viewer/graphviewer/GraphViewerDemo.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="0">
-=======
-        <state relative-caret-position="6450">
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
           <caret line="529" column="111" selection-start-line="529" selection-start-column="6" selection-end-line="529" selection-end-column="111" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/lib/yfiles-for-java.jar!/com/yworks/yfiles/view/GraphComponent.class">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="0">
           <caret line="62" column="22" selection-start-line="62" selection-start-column="22" selection-end-line="62" selection-end-column="22" />
         </state>
@@ -1234,24 +1099,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="35" column="102" selection-start-line="35" selection-start-column="102" selection-end-line="35" selection-end-column="102" />
-=======
-        <state relative-caret-position="150">
-          <caret line="62" column="22" selection-start-line="62" selection-start-column="22" selection-end-line="62" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/impl/AbstractJavaEntity.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="45" column="39" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/impl/DefaultJavaType.class">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="75">
           <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
           <folding />
@@ -1276,73 +1129,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DependencyParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="106" column="43" selection-start-line="106" selection-start-column="43" selection-end-line="106" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/JSONInspector.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="705">
           <caret line="66" column="31" selection-start-line="66" selection-start-column="31" selection-end-line="66" selection-end-column="31" />
           <folding />
-=======
-        <state relative-caret-position="524">
-          <caret line="188" column="1" selection-start-line="188" selection-start-column="1" selection-end-line="188" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#7915#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/JSONInspector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="66" column="1" selection-start-line="66" selection-start-column="1" selection-end-line="66" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#3040#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GraphHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="43" column="26" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#16497#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
+        <state relative-caret-position="1245">
+          <caret line="119" column="9" selection-start-line="119" selection-start-column="9" selection-end-line="119" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DependencyMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="300">
-          <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+        <state relative-caret-position="315">
+          <caret line="35" column="9" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
           <folding>
             <marker date="1467327401000" expanded="false" signature="0:2" ph="/**...*/" />
-=======
-        <state relative-caret-position="315">
-          <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#1723#0" expanded="true" />
->>>>>>> b5af0d56b52525b5f4db97ff9617cc18c8cd025d
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GraphHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/DependencyParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="119" column="9" selection-start-line="119" selection-start-column="9" selection-end-line="119" selection-end-column="9" />
+        <state relative-caret-position="330">
+          <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
           <folding />
         </state>
       </provider>
