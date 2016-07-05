@@ -46,7 +46,6 @@ public class JSONInspector {
         String sT = (String) jsonObject.get("st"); //if the JavaClass has an @Service tag and has a property on that tag, this will not be empty
         //TODO: Make sT actually show up in the console
 
-
         System.out.println("JSON toString for " + className + ".");
         System.out.println("");
 
