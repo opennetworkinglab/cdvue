@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="36ae5c05-d34c-4c0e-ba70-1c338d3c21ee" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DependencyParser.java" afterPath="$PROJECT_DIR$/src/DependencyParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GraphHandler.java" afterPath="$PROJECT_DIR$/src/GraphHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/JSONInspector.java" afterPath="$PROJECT_DIR$/src/JSONInspector.java" />
     </list>
     <ignored path="Component Dependency Mapper.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,8 +63,8 @@
       <file leaf-file-name="GraphHandler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GraphHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="130" column="13" selection-start-line="130" selection-start-column="13" selection-end-line="130" selection-end-column="13" />
+            <state relative-caret-position="31">
+              <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -529,12 +526,20 @@
       <workItem from="1467324496812" duration="7122000" />
       <workItem from="1467336993253" duration="456000" />
       <workItem from="1467337524359" duration="381000" />
-      <workItem from="1467737967832" duration="1545000" />
+      <workItem from="1467737967832" duration="1596000" />
     </task>
+    <task id="LOCAL-00001" summary="small json dictionary fix">
+      <created>1467740867647</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1467740867647</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111654000" />
+    <option name="totallyTimeSpent" value="111705000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -587,6 +592,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="small json dictionary fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="small json dictionary fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -980,8 +989,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GraphHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="130" column="13" selection-start-line="130" selection-start-column="13" selection-end-line="130" selection-end-column="13" />
+        <state relative-caret-position="31">
+          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
           <folding />
         </state>
       </provider>
