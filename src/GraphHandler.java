@@ -121,6 +121,14 @@ public class GraphHandler
         //if service class, modify serviceToComponents Map
         if (hs) {
             List<JavaClass> classes = (List) j.get("ic");
+            String serviceTag = (String) j.get("st");
+            if (!serviceTag.equals("")) {
+                Set<String> cForIC = serviceToComponents.get(serviceTag); //gets previous Set for current implemented interface
+                if (cForIC == null)
+                    cForIC = new HashSet<>(); //creates a new Set if there was no previous Set for current interface
+                cForIC.add(className);
+                serviceToComponents.put(serviceTag, cForIC);
+            }
             for (JavaClass ic : classes) {
                 String fullICName = ic.getFullyQualifiedName();
                 Set<String> currentForIC = serviceToComponents.get(fullICName); //gets previous Set for current implemented interface
@@ -129,7 +137,6 @@ public class GraphHandler
                 currentForIC.add(className);
                 serviceToComponents.put(fullICName, currentForIC);
             }
-            //TODO: Check if the @Service tag itself has attributes here and add class names accordingly.
         }
         if (!(hc || hs)) {
             isolatedNodes.put(className, ii); //puts isolated nodes in the isolatedNodes map, with the fully qualified name mapping to if it's an interface or not

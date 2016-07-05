@@ -16,6 +16,7 @@
 
 import com.thoughtworks.qdox.JavaProjectBuilder;
 import com.thoughtworks.qdox.model.*;
+import com.thoughtworks.qdox.model.expression.AnnotationValue;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -84,6 +85,7 @@ public class DependencyParser {
         List<JavaClass> implementedClasses = javaClass.getImplementedInterfaces();
         List<JavaField> fields = javaClass.getFields();
         List<JavaField> referenceFields = new ArrayList<>();
+        String serviceTag = "";
 
         if (!classAnnotations.isEmpty()) {
 
@@ -92,8 +94,14 @@ public class DependencyParser {
                 String aName = ja.getType().getName();
                 if (aName.equals("Component"))
                     isComponent = true;
-                else if (aName.equals("Service"))
+                else if (aName.equals("Service")) {
                     isService = true;
+                    AnnotationValue sT = ja.getProperty("value");
+                    if (sT != null) {
+                        serviceTag = ja.getProperty("value").toString();
+                        serviceTag = serviceTag.substring(0, serviceTag.length() - 6);
+                    }
+                }
             }
 
             if (isComponent || isService) {
@@ -124,6 +132,7 @@ public class DependencyParser {
         jsonObject.put("ic", implementedClasses); //all JavaClass's that the class implements
         jsonObject.put("rf", referenceFields); //all JavaField's from this class that contain an @Reference annotation
         jsonObject.put("ii", isInterface); //whether or not the JavaClass is an interface or not
+        jsonObject.put("st", serviceTag); //if there is a tag for the @Service annotation, this String will not be empty
         jsonObjects.add(jsonObject);
     }
 

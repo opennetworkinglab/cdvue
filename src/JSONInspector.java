@@ -43,6 +43,9 @@ public class JSONInspector {
         List<JavaAnnotation> jca = (List) jsonObject.get("ca"); //all JavaAnnotations for the class
         List<JavaField> jfa = (List) jsonObject.get("rf"); //all JavaField's from this class that contain an @Reference annotation
         List<JavaClass> jic = (List) jsonObject.get("ic"); //all JavaClass's that the class implements
+        String sT = (String) jsonObject.get("st"); //if the JavaClass has an @Service tag and has a property on that tag, this will not be empty
+        //TODO: Make sT actually show up in the console
+
 
         System.out.println("JSON toString for " + className + ".");
         System.out.println("");
