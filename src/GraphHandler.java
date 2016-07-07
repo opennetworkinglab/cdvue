@@ -88,12 +88,12 @@ public class GraphHandler
      * Iteratively populates the two maps with each JSONObject. Also inspects them with a JSONInspector object.
      */
     private void prepareData() {
-        JSONInspector jsonInspector = new JSONInspector();
+        //JSONInspector jsonInspector = new JSONInspector(); //uncomment this and the line below to get useful information in the console
 
         for (int i = 0; i < jsonObjects.size(); i++)
         {
             JSONObject j = (JSONObject) jsonObjects.get(i);
-            jsonInspector.toString(j); //prints out useful information to the console
+            //jsonInspector.toString(j); //prints out useful information to the console, uncomment if you want this information in the console
             populateMaps(j);
         }
     }

@@ -92,14 +92,15 @@ public class DependencyParser {
             //checking whether the class has an @Service or @Component annotation present
             for (JavaAnnotation ja : classAnnotations) {
                 String aName = ja.getType().getName();
-                if (aName.equals("Component"))
+                if (aName.equals("org.apache.felix.scr.annotations.Component") || aName.equals("Component"))
                     isComponent = true;
-                else if (aName.equals("Service")) {
+                else if (aName.equals("org.apache.felix.scr.annotations.Service") || aName.equals("Service")) {
                     isService = true;
                     AnnotationValue sT = ja.getProperty("value");
                     if (sT != null) {
                         serviceTag = ja.getProperty("value").toString();
                         serviceTag = serviceTag.substring(0, serviceTag.length() - 6);
+                        //TODO: @Service classes can refer to themselves, resulting in unnecessary duplicate nodes! Fix this...
                     }
                 }
             }
@@ -152,7 +153,7 @@ public class DependencyParser {
         System.out.println("The field " + field.getType().getName() + " has " + annotations.size() + " annotations.");
 
         //filters out all annotations that aren't @Reference. Adds all @Reference annotations to both the given String and JavaField Lists.
-        annotations.stream().filter(ja -> ja.getType().getName().equals("Reference")).forEach(ja -> {
+        annotations.stream().filter(ja -> (ja.getType().getName().equals("org.apache.felix.scr.annotations.Reference") || ja.getType().getName().equals("Reference"))).forEach(ja -> {
             lines.add(ja.getType().getName());
             jas.add(field);
         });
