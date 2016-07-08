@@ -16,6 +16,7 @@
 
 import com.thoughtworks.qdox.model.JavaClass;
 import com.thoughtworks.qdox.model.JavaField;
+import com.yworks.yfiles.algorithms.Graph;
 import com.yworks.yfiles.geometry.RectD;
 import com.yworks.yfiles.graph.*;
 import com.yworks.yfiles.graph.labelmodels.InteriorLabelModel;
@@ -35,6 +36,8 @@ import org.json.simple.JSONObject;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.*;
 import java.util.List;
 
@@ -176,6 +179,10 @@ public class GraphHandler
         LayoutUtilities.applyLayout(graph, new CircularLayout());
 
         graphComponent.setInputMode(graphViewerInputMode);
+
+        //setting up search frame
+        SearchHandler searchHandler = new SearchHandler(graph, graphComponent);
+        searchHandler.createAndShowGUI();
     }
 
     private void onHoveredItemChanged(Object sender, HoveredItemChangedEventArgs hoveredItemChangedEventArgs) {
@@ -189,9 +196,8 @@ public class GraphHandler
                 if (newItem instanceof INode)
                 {
                     Set<ILookup> toBeHighlighted = new HashSet<>();
-                    toBeHighlighted = highlightOutgoingNodes(newItem, toBeHighlighted);
-                    for (ILookup item : toBeHighlighted)
-                        manager.addHighlight(item);
+                    toBeHighlighted = highlightOutgoingNodes(newItem, toBeHighlighted, graphComponent);
+                    toBeHighlighted.stream().forEach(manager::addHighlight);
                 } else if (newItem instanceof IEdge)
                 {
                     IEdge edge = (IEdge) newItem;
@@ -216,7 +222,7 @@ public class GraphHandler
         if (!e.isHandled() && e.getItem() instanceof INode) {
             INode node = (INode) e.getItem();
             Set<ILookup> toBeHighlighted = new HashSet<>();
-            toBeHighlighted = highlightOutgoingNodes(node, toBeHighlighted);
+            toBeHighlighted = highlightOutgoingNodes(node, toBeHighlighted, graphComponent);
             toBeHighlighted.stream().forEach(manager::addHighlight);
         }
     }
@@ -244,7 +250,7 @@ public class GraphHandler
      * @param oldToBeHighlighted        the old Set of what is to be highlighted
      * @return                          the new Set of what is to be highlighted
      */
-    private Set highlightOutgoingNodes(IModelItem item, Set<ILookup> oldToBeHighlighted) {
+    public static Set highlightOutgoingNodes(IModelItem item, Set<ILookup> oldToBeHighlighted, GraphComponent graphComponent) {
         Set<ILookup> toBeHighlighted = new HashSet<>();
         INode node = (INode) item;
         if (!oldToBeHighlighted.contains(node))
@@ -259,7 +265,7 @@ public class GraphHandler
         for (Object e : parsedEdges) {
             toBeHighlighted.add((IEdge) e); //adds current parsed edge
             toBeHighlighted.addAll(oldToBeHighlighted); //combines new Set with old Set
-            toBeHighlighted.addAll(highlightOutgoingNodes(((IEdge) e).getTargetNode(), toBeHighlighted)); //recursive call to target node of current outbound edge
+            toBeHighlighted.addAll(highlightOutgoingNodes(((IEdge) e).getTargetNode(), toBeHighlighted, graphComponent)); //recursive call to target node of current outbound edge
         }
 
         return toBeHighlighted;

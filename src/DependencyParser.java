@@ -72,6 +72,7 @@ public class DependencyParser {
      */
     private void processClass(JavaClass javaClass) {
         String fullyClassifiedName = javaClass.getFullyQualifiedName();
+        String shortName = javaClass.getName();
         JSONObject jsonObject = new JSONObject();
 
         System.out.println("");
@@ -100,7 +101,9 @@ public class DependencyParser {
                     if (sT != null) {
                         serviceTag = ja.getProperty("value").toString();
                         serviceTag = serviceTag.substring(0, serviceTag.length() - 6);
-                        //TODO: @Service classes can refer to themselves, resulting in unnecessary duplicate nodes! Fix this...
+                        if (serviceTag.equals(fullyClassifiedName) || serviceTag.equals(shortName)) {
+                            serviceTag = "";
+                        }
                     }
                 }
             }
