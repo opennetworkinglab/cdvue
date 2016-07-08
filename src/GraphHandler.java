@@ -16,7 +16,6 @@
 
 import com.thoughtworks.qdox.model.JavaClass;
 import com.thoughtworks.qdox.model.JavaField;
-import com.yworks.yfiles.algorithms.Graph;
 import com.yworks.yfiles.geometry.RectD;
 import com.yworks.yfiles.graph.*;
 import com.yworks.yfiles.graph.labelmodels.InteriorLabelModel;
@@ -36,8 +35,6 @@ import org.json.simple.JSONObject;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.*;
 import java.util.List;
 
