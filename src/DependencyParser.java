@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import com.oracle.webservices.internal.api.databinding.JavaCallInfo;
 import com.thoughtworks.qdox.JavaProjectBuilder;
 import com.thoughtworks.qdox.model.*;
 import com.thoughtworks.qdox.model.expression.AnnotationValue;
@@ -71,6 +72,8 @@ public class DependencyParser {
      * @param javaClass     the given JavaClass
      */
     private void processClass(JavaClass javaClass) {
+        if (javaClass.isAbstract())
+            return;
         String fullyClassifiedName = javaClass.getFullyQualifiedName();
         String shortName = javaClass.getName();
         JSONObject jsonObject = new JSONObject();
@@ -79,33 +82,32 @@ public class DependencyParser {
         System.out.println("Processing class: " + fullyClassifiedName + ".");
 
         //default values to be loaded into the JSONObject
-        boolean isComponent = false;
-        boolean isService = false;
+        boolean isComponent = containsClassAnnotation(javaClass, "Component");
+        boolean isService = containsClassAnnotation(javaClass, "Service");
         boolean isInterface = javaClass.isInterface();
         List<JavaAnnotation> classAnnotations = javaClass.getAnnotations();
-        List<JavaClass> implementedClasses = javaClass.getImplementedInterfaces();
+        List<JavaClass> implementedClassesUnparsed = javaClass.getImplementedInterfaces();
+        List<String> implementedClasses = new ArrayList<>();
+
+        //populating implementedClasses List
+        for (JavaClass ic : implementedClassesUnparsed) {
+            implementedClasses.add(ic.getFullyQualifiedName());
+        }
+
         List<JavaField> fields = javaClass.getFields();
-        List<JavaField> referenceFields = new ArrayList<>();
+        List<String> referenceFields = new ArrayList<>();
         String serviceTag = "";
 
         if (!classAnnotations.isEmpty()) {
+            //modifying serviceTag if necessary
+            serviceTag = getServiceTag(javaClass);
 
-            //checking whether the class has an @Service or @Component annotation present
-            for (JavaAnnotation ja : classAnnotations) {
-                String aName = ja.getType().getName();
-                if (aName.equals("org.apache.felix.scr.annotations.Component") || aName.equals("Component"))
-                    isComponent = true;
-                else if (aName.equals("org.apache.felix.scr.annotations.Service") || aName.equals("Service")) {
-                    isService = true;
-                    AnnotationValue sT = ja.getProperty("value");
-                    if (sT != null) {
-                        serviceTag = ja.getProperty("value").toString();
-                        serviceTag = serviceTag.substring(0, serviceTag.length() - 6);
-                        if (serviceTag.equals(fullyClassifiedName) || serviceTag.equals(shortName)) {
-                            serviceTag = "";
-                        }
-                    }
-                }
+            if (isComponent) {
+                referenceFields = processSuperFields(javaClass.getSuperJavaClass(), referenceFields);
+            }
+
+            if (isService) {
+                implementedClasses = processSuperImplements(javaClass.getSuperJavaClass(), implementedClasses);
             }
 
             if (isComponent || isService) {
@@ -117,9 +119,12 @@ public class DependencyParser {
                 for (JavaField field : fields)
                     processField(lines, referenceFields, field);
 
+                //uncomment below lines for text catalog
                 //no point in writing an empty catalog!
+                /*
                 if (!lines.isEmpty())
                     writeCatalog(javaClass, lines);
+                    */
             }
             else
                 System.out.println("The class has " + classAnnotations.size() + " annotations, but none of them are Component nor Service.");
@@ -143,11 +148,11 @@ public class DependencyParser {
     /**
      * Processes the given JavaField of a specific JavaClass.
      *
-     * @param lines         list of all @Reference annotations on this field
-     * @param jas           list of all JavaFields with an @Reference annotation
-     * @param field         the field to be processed.
+     * @param lines                 list of all @Reference annotations on this field
+     * @param referenceFields       list of all JavaFields with an @Reference annotation
+     * @param field                 the field to be processed.
      */
-    private void processField(List<String> lines, List<JavaField> jas, JavaField field) {
+    private void processField(List<String> lines, List<String> referenceFields, JavaField field) {
         System.out.println("");
         System.out.println("Processing field.");
 
@@ -158,8 +163,57 @@ public class DependencyParser {
         //filters out all annotations that aren't @Reference. Adds all @Reference annotations to both the given String and JavaField Lists.
         annotations.stream().filter(ja -> (ja.getType().getName().equals("org.apache.felix.scr.annotations.Reference") || ja.getType().getName().equals("Reference"))).forEach(ja -> {
             lines.add(ja.getType().getName());
-            jas.add(field);
+            referenceFields.add(field.getType().getFullyQualifiedName());
         });
+    }
+
+    private List<String> processSuperFields(JavaClass superClass, List<String> referenceFields) {
+        if (superClass != null && containsClassAnnotation(superClass, "Component")) {
+            for (JavaField javaField : superClass.getFields()) {
+                if (javaField.getAnnotations().stream().filter(ja -> (ja.getType().getName().equals("org.apache.felix.scr.annotations.Reference") || ja.getType().getName().equals("Reference"))).count() > 0) {
+                    referenceFields.add(javaField.getType().getFullyQualifiedName());
+                }
+            }
+            referenceFields = processSuperFields(superClass.getSuperJavaClass(), referenceFields);
+        }
+        return referenceFields;
+    }
+
+    private List<String> processSuperImplements(JavaClass superClass, List<String> implementedInterfaces) {
+        if (superClass != null && containsClassAnnotation(superClass, "Service")) {
+            for (JavaClass javaInterface : superClass.getImplementedInterfaces()) {
+                implementedInterfaces.add(javaInterface.getFullyQualifiedName());
+                String serviceTag = getServiceTag(superClass);
+                if (!serviceTag.equals(""))
+                    implementedInterfaces.add(getServiceTag(superClass));
+                implementedInterfaces = processSuperImplements(superClass.getSuperJavaClass(), implementedInterfaces);
+            }
+        }
+        return implementedInterfaces;
+    }
+
+    private String getServiceTag(JavaClass javaClass) {
+        String serviceTag = "";
+        for (JavaAnnotation ja : javaClass.getAnnotations()) {
+            AnnotationValue sT = ja.getProperty("value");
+            if (sT != null) {
+                serviceTag = ja.getProperty("value").toString();
+                serviceTag = serviceTag.substring(0, serviceTag.length() - 6);
+                if (serviceTag.equals(javaClass.getFullyQualifiedName()) || serviceTag.equals(javaClass.getName())) {
+                    serviceTag = ""; //this takes care of the case where the class is a @Service of itself
+                }
+            }
+        }
+        return serviceTag;
+    }
+
+    private boolean containsClassAnnotation(JavaClass javaClass, String annotationType) {
+        for (JavaAnnotation ja : javaClass.getAnnotations()) {
+            String aName = ja.getType().getName();
+            if (aName.equals("org.apache.felix.scr.annotations." + annotationType) || aName.equals(annotationType))
+                return true;
+        }
+        return false;
     }
 
     /**

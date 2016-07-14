@@ -18,11 +18,14 @@ import com.thoughtworks.qdox.model.JavaClass;
 import com.thoughtworks.qdox.model.JavaField;
 import com.yworks.yfiles.geometry.RectD;
 import com.yworks.yfiles.graph.*;
+import com.yworks.yfiles.graph.labelmodels.ExteriorLabelModel;
 import com.yworks.yfiles.graph.labelmodels.InteriorLabelModel;
 import com.yworks.yfiles.graph.styles.IArrow;
 import com.yworks.yfiles.graph.styles.PolylineEdgeStyle;
 import com.yworks.yfiles.graph.styles.ShinyPlateNodeStyle;
 import com.yworks.yfiles.layout.circular.CircularLayout;
+import com.yworks.yfiles.layout.hierarchic.HierarchicLayout;
+import com.yworks.yfiles.layout.hierarchic.LayoutMode;
 import com.yworks.yfiles.utils.IListEnumerable;
 import com.yworks.yfiles.view.GraphComponent;
 import com.yworks.yfiles.view.HighlightIndicatorManager;
@@ -57,6 +60,7 @@ public class GraphHandler
     private ShinyPlateNodeStyle interfaceNodeStyle;
     private PolylineEdgeStyle defaultEdgeStyle;
     private static final RectD NODE_SHELL = new RectD(10, 10, 500, 50);
+    private static final RectD GHOST_SHELL = new RectD(10, 10, 50, 50);
 
     /**
      * Constructor for objects of class GraphHandler.
@@ -112,15 +116,15 @@ public class GraphHandler
 
         //if component class, modify componentToReferences Map
         if (hc) {
-            List <JavaField> fields = (List) j.get("rf");
+            List <String> fields = (List) j.get("rf");
             Set<String> currentForC = new HashSet<>();
-            for (JavaField f : fields)
-                currentForC.add(f.getType().getFullyQualifiedName()); //adds the fully qualified name of the interface the annotation refers to
+            for (String name : fields)
+                currentForC.add(name); //adds the fully qualified name of the interface the annotation refers to
             componentToReferences.put(className, currentForC);
         }
-        //if service class, modify serviceToComponents Map
-        if (hs) {
-            List<JavaClass> classes = (List) j.get("ic");
+        //if service and component class, modify serviceToComponents Map
+        if (hs && hc) {
+            List<String> classes = (List) j.get("ic");
             String serviceTag = (String) j.get("st");
             if (!serviceTag.equals("")) {
                 Set<String> cForIC = serviceToComponents.get(serviceTag); //gets previous Set for current implemented interface
@@ -129,8 +133,8 @@ public class GraphHandler
                 cForIC.add(className);
                 serviceToComponents.put(serviceTag, cForIC);
             }
-            for (JavaClass ic : classes) {
-                String fullICName = ic.getFullyQualifiedName();
+            for (String icName : classes) {
+                String fullICName = icName;
                 Set<String> currentForIC = serviceToComponents.get(fullICName); //gets previous Set for current implemented interface
                 if (currentForIC == null)
                     currentForIC = new HashSet<>(); //creates a new Set if there was no previous Set for current interface
@@ -170,10 +174,9 @@ public class GraphHandler
         frame.add(graphComponent, BorderLayout.CENTER);
 
         IGraph graph = graphComponent.getGraph();
-        setupIsolatedNodes(graph);
         buildComponentNodes(graph);
-        finishServiceNodeConnections(graph);
-        LayoutUtilities.applyLayout(graph, new CircularLayout());
+        HierarchicLayout layout = new HierarchicLayout(); //change this to whatever type of layout you want
+        LayoutUtilities.applyLayout(graph, layout);
 
         graphComponent.setInputMode(graphViewerInputMode);
 
@@ -216,11 +219,23 @@ public class GraphHandler
         HighlightIndicatorManager manager = graphComponent.getHighlightIndicatorManager();
         manager.clearHighlights();
 
-        if (!e.isHandled() && e.getItem() instanceof INode) {
-            INode node = (INode) e.getItem();
-            Set<ILookup> toBeHighlighted = new HashSet<>();
-            toBeHighlighted = highlightOutgoingNodes(node, toBeHighlighted, graphComponent);
-            toBeHighlighted.stream().forEach(manager::addHighlight);
+        if (!e.isHandled())
+        {
+            Object item = e.getItem();
+            if (item instanceof INode)
+            {
+                INode node = (INode) item;
+                Set<ILookup> toBeHighlighted = new HashSet<>();
+                toBeHighlighted = highlightOutgoingNodes(node, toBeHighlighted, graphComponent);
+                toBeHighlighted.stream().forEach(manager::addHighlight);
+            }
+            //TODO: Make the below stuff work
+            else if (item instanceof IEdge)
+            {
+                IEdge edge = (IEdge) item;
+                System.out.println("edge clicked");
+                graphComponent.getGraph().addLabel(edge, (String) edge.getTag(), ExteriorLabelModel.NORTH);
+            }
         }
     }
 
@@ -269,26 +284,6 @@ public class GraphHandler
     }
 
     /**
-     * Puts elements from isolatedNodes on to the given graph.
-     *
-     * @param graph     the given IGraph
-     */
-    private void setupIsolatedNodes(IGraph graph) {
-        if (!isolatedNodes.isEmpty()) {
-            for (Map.Entry<String, Boolean> entry : isolatedNodes.entrySet()) {
-                String className = entry.getKey();
-                boolean ii = entry.getValue();
-                if (ii)
-                    graph.createNode(NODE_SHELL, interfaceNodeStyle, className);
-                else
-                    graph.createNode(NODE_SHELL, isolatedNodeStyle, className);
-                INode node = getNodeWithName(className, graph);
-                graph.addLabel(node, className, InteriorLabelModel.CENTER);
-            }
-        }
-    }
-
-    /**
      * Puts all nodes in the componentToReferences Map on the given graph.
      *
      * @param graph     the given IGraph
@@ -298,29 +293,12 @@ public class GraphHandler
             //iterates through each entry in the Map
             for (Map.Entry<String, Set<String>> entry : componentToReferences.entrySet()) {
                 String componentClassName = entry.getKey();
-                graph.createNode(NODE_SHELL, linkedNodeStyle, componentClassName);
+                if (!nodePresentWithName(componentClassName, graph)) {
+                    graph.createNode(NODE_SHELL, linkedNodeStyle, componentClassName);
+                }
                 INode componentNode = getNodeWithName(componentClassName, graph);
                 graph.addLabel(componentNode, componentClassName, InteriorLabelModel.CENTER);
                 linkNode(componentNode, entry.getValue(), graph); //link the node to every interface node in its associated Set
-            }
-        }
-    }
-
-    /**
-     * Finishes connecting service interface nodes (if present already) to the component nodes that implement them
-     * using the serviceToComponents Map.
-     *
-     * @param graph     the given IGraph
-     */
-    private void finishServiceNodeConnections(IGraph graph) {
-        if (!serviceToComponents.isEmpty()) {
-            for (Map.Entry<String, Set<String>> entry : serviceToComponents.entrySet()) {
-                String interfaceName = entry.getKey();
-                if (!nodePresentWithName(interfaceName, graph))
-                    graph.createNode(NODE_SHELL, linkedNodeStyle, interfaceName); //if the interface node isn't present, create it
-                INode interfaceNode = getNodeWithName(interfaceName, graph);
-                graph.addLabel(interfaceNode, interfaceName, InteriorLabelModel.CENTER);
-                linkNode(interfaceNode, entry.getValue(), graph); //link the node to every component node in its associated Set
             }
         }
     }
@@ -334,16 +312,28 @@ public class GraphHandler
      */
     private void linkNode(INode node, Set<String> names, IGraph graph) {
         for (String name : names) {
-            if (!nodePresentWithName(name, graph)) {
-                graph.createNode(NODE_SHELL, linkedNodeStyle, name); //if a node with this name isn't present, create it
+            Set<String> retrievedComponents = serviceToComponents.get(name);
+            if (retrievedComponents == null) {
+                if (!nodePresentWithName(name + "?", graph))
+                    graph.createNode(GHOST_SHELL, isolatedNodeStyle, name + "?");
+                INode ghostNode = getNodeWithName(name + "?", graph);
+                graph.addLabel(ghostNode, "?", InteriorLabelModel.CENTER);
+                graph.createEdge(node, ghostNode, defaultEdgeStyle, name);
             }
-            INode nodeToLink = getNodeWithName(name, graph); //get the node to link
-            if (nodeToLink != null) {
-                graph.addLabel(nodeToLink, name, InteriorLabelModel.CENTER);
-                graph.createEdge(node, nodeToLink, defaultEdgeStyle); //create the edge between the two nodes
+            else {
+                for (String n : retrievedComponents) {
+                    if (!nodePresentWithName(n, graph))
+                        graph.createNode(NODE_SHELL, linkedNodeStyle, n); //if a component node with this name isn't present, create it
+                    INode nodeToLink = getNodeWithName(n, graph); //get the node to link
+                    if (nodeToLink != null) {
+                        graph.addLabel(nodeToLink, n, InteriorLabelModel.CENTER);
+                        if (node != nodeToLink) {
+                            graph.createEdge(node, nodeToLink, defaultEdgeStyle, name); //create the edge between the two component nodes
+                        }
+                    } else
+                        System.out.println("nodeToLink was null");
+                }
             }
-            else
-                System.out.println("nodeToLink was null");
         }
     }
 

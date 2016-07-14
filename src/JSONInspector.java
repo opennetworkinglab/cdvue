@@ -41,10 +41,9 @@ public class JSONInspector {
         boolean hSA = (boolean) jsonObject.get("hs"); //whether the class has an @Service annotation
         boolean iI = (boolean) jsonObject.get("ii"); //whether or not the JavaClass is an interface or not
         List<JavaAnnotation> jca = (List) jsonObject.get("ca"); //all JavaAnnotations for the class
-        List<JavaField> jfa = (List) jsonObject.get("rf"); //all JavaField's from this class that contain an @Reference annotation
-        List<JavaClass> jic = (List) jsonObject.get("ic"); //all JavaClass's that the class implements
+        List<String> jfa = (List) jsonObject.get("rf"); //all JavaField's from this class that contain an @Reference annotation
+        List<String> jic = (List) jsonObject.get("ic"); //all JavaClass's that the class implements
         String sT = (String) jsonObject.get("st"); //if the JavaClass has an @Service tag and has a property on that tag, this will not be empty
-        //TODO: Make sT actually show up in the console
 
         System.out.println("JSON toString for " + className + ".");
         System.out.println("");
@@ -60,7 +59,10 @@ public class JSONInspector {
             System.out.println(className + " has " + jfa.size() + " fields with reference annotations recovered from the JSON.");
         if (!jic.isEmpty()) {
             System.out.println(className + " implements all of the classes below");
-            jic.forEach(jc -> System.out.println("-" + jc.getName()));
+            jic.forEach(jc -> System.out.println("-" + jc));
+        }
+        if (!sT.equals("")) {
+            System.out.println("-" + sT + " (from @Service tag parameter)");
         }
 
         System.out.println("");
