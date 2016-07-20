@@ -62,6 +62,8 @@ public class GraphHandler
     private static final RectD NODE_SHELL = new RectD(10, 10, 500, 50);
     private static final RectD GHOST_SHELL = new RectD(10, 10, 50, 50);
 
+    private JSONArray catalog;
+
     /**
      * Constructor for objects of class GraphHandler.
      *
@@ -86,6 +88,8 @@ public class GraphHandler
         interfaceNodeStyle.setPaint(Color.ORANGE);
         interfaceNodeStyle.setShadowDrawingEnabled(true);
         defaultEdgeStyle.setTargetArrow(IArrow.DEFAULT);
+
+        catalog = new JSONArray();
     }
 
     /**
@@ -183,6 +187,8 @@ public class GraphHandler
         //setting up search frame
         SearchHandler searchHandler = new SearchHandler(graph, graphComponent);
         searchHandler.createAndShowGUI();
+
+        System.out.println(catalog.toJSONString());
     }
 
     private void onHoveredItemChanged(Object sender, HoveredItemChangedEventArgs hoveredItemChangedEventArgs) {
@@ -293,12 +299,24 @@ public class GraphHandler
             //iterates through each entry in the Map
             for (Map.Entry<String, Set<String>> entry : componentToReferences.entrySet()) {
                 String componentClassName = entry.getKey();
+
+                JSONObject newJSON = getJSONWithNameFromCatalog(componentClassName, catalog);
+
+                if (newJSON == null) {
+                    newJSON = new JSONObject();
+                    newJSON.put("name", componentClassName);
+                    newJSON.put("dependsOn", new JSONArray());
+                    newJSON.put("numberDependsOn", null);
+                    newJSON.put("numberDependents", 0);
+                    catalog.add(newJSON);
+                }
+
                 if (!nodePresentWithName(componentClassName, graph)) {
                     graph.createNode(NODE_SHELL, linkedNodeStyle, componentClassName);
                 }
                 INode componentNode = getNodeWithName(componentClassName, graph);
                 graph.addLabel(componentNode, componentClassName, InteriorLabelModel.CENTER);
-                linkNode(componentNode, entry.getValue(), graph); //link the node to every interface node in its associated Set
+                linkNode(componentNode, entry.getValue(), graph, newJSON); //link the node to every interface node in its associated Set
             }
         }
     }
@@ -310,10 +328,30 @@ public class GraphHandler
      * @param names     the given Set
      * @param graph     the given IGraph
      */
-    private void linkNode(INode node, Set<String> names, IGraph graph) {
+    private void linkNode(INode node, Set<String> names, IGraph graph, JSONObject jsonObject) {
+        String nameFromJSON = (String) jsonObject.get("name");
+        JSONArray JSONarray = (JSONArray) jsonObject.get("dependsOn");
+        int dependsOn = 0;
+        JSONObject jsonObject1;
+
         for (String name : names) {
             Set<String> retrievedComponents = serviceToComponents.get(name);
             if (retrievedComponents == null) {
+                if (!stringPresentInArray(name + "?", JSONarray)) {
+                    if (!jsonPresentInArray(name + "?", catalog)) {
+                        JSONObject ghostJSON = new JSONObject();
+                        ghostJSON.put("name", name + "?");
+                        ghostJSON.put("dependsOn", new JSONArray());
+                        ghostJSON.put("numberDependsOn", "N/A");
+                        ghostJSON.put("numberDependents", 0);
+                        catalog.add(ghostJSON);
+                    }
+                    jsonObject1 = getJSONWithNameFromCatalog(name + "?", catalog);
+                    JSONarray.add(name + "?");
+                    int previousNumberDependents = (int) jsonObject1.get("numberDependents");
+                    jsonObject1.put("numberDependents", previousNumberDependents + 1);
+                    dependsOn++;
+                }
                 if (!nodePresentWithName(name + "?", graph))
                     graph.createNode(GHOST_SHELL, isolatedNodeStyle, name + "?");
                 INode ghostNode = getNodeWithName(name + "?", graph);
@@ -322,6 +360,21 @@ public class GraphHandler
             }
             else {
                 for (String n : retrievedComponents) {
+                    if (!stringPresentInArray(n, JSONarray) && !n.equals(nameFromJSON)) {
+                        jsonObject1 = getJSONWithNameFromCatalog(n, catalog);
+                        if (jsonObject1 == null) {
+                            jsonObject1 = new JSONObject();
+                            jsonObject1.put("name", n);
+                            jsonObject1.put("dependsOn", new JSONArray()); //TODO: Replace imports with dependsOn or something, this is just to test with online D3 tutorial
+                            jsonObject1.put("numberDependsOn", null);
+                            jsonObject1.put("numberDependents", 0);
+                            catalog.add(jsonObject1);
+                        }
+                        JSONarray.add(n);
+                        int previousNumberDependents = (int) jsonObject1.get("numberDependents");
+                        jsonObject1.put("numberDependents", previousNumberDependents + 1);
+                        dependsOn++;
+                    }
                     if (!nodePresentWithName(n, graph))
                         graph.createNode(NODE_SHELL, linkedNodeStyle, n); //if a component node with this name isn't present, create it
                     INode nodeToLink = getNodeWithName(n, graph); //get the node to link
@@ -335,6 +388,8 @@ public class GraphHandler
                 }
             }
         }
+        jsonObject.put("numberDependsOn", dependsOn);
+        jsonObject.put("dependsOn", JSONarray);
     }
 
     /**
@@ -353,6 +408,31 @@ public class GraphHandler
                 return true;
         }
         return false;
+    }
+
+    private boolean stringPresentInArray(String value, JSONArray jsonArray) {
+        for (Object i : jsonArray) {
+            if (value.equals((String) i))
+                return true;
+        }
+        return false;
+    }
+
+    private boolean jsonPresentInArray(String name, JSONArray jsonArray) {
+        for (Object i : jsonArray) {
+            if (name.equals(((JSONObject) i).get("name")))
+                return true;
+        }
+        return false;
+    }
+
+    private JSONObject getJSONWithNameFromCatalog(String name, JSONArray jsonArray) {
+        for (Object o : jsonArray) {
+            JSONObject jsonObject = (JSONObject) o;
+            if (jsonObject.get("name").equals(name))
+                return (JSONObject) o;
+        }
+        return null;
     }
 
     /**
