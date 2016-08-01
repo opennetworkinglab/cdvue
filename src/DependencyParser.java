@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-import com.oracle.webservices.internal.api.databinding.JavaCallInfo;
 import com.thoughtworks.qdox.JavaProjectBuilder;
-import com.thoughtworks.qdox.model.*;
+import com.thoughtworks.qdox.model.JavaAnnotation;
+import com.thoughtworks.qdox.model.JavaClass;
+import com.thoughtworks.qdox.model.JavaField;
 import com.thoughtworks.qdox.model.expression.AnnotationValue;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

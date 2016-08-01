@@ -14,10 +14,8 @@
  * limitations under the License.
  */
 
-import com.sun.corba.se.impl.orbutil.ObjectWriter;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import sun.jvm.hotspot.oops.ExceptionTableElement;
 
 import java.io.*;
 import java.util.*;

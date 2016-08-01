@@ -15,8 +15,6 @@
  */
 
 import com.thoughtworks.qdox.model.JavaAnnotation;
-import com.thoughtworks.qdox.model.JavaClass;
-import com.thoughtworks.qdox.model.JavaField;
 import org.json.simple.JSONObject;
 
 import java.util.List;
