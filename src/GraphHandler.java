@@ -14,32 +14,13 @@
  * limitations under the License.
  */
 
-import com.thoughtworks.qdox.model.JavaClass;
-import com.thoughtworks.qdox.model.JavaField;
-import com.yworks.yfiles.geometry.RectD;
-import com.yworks.yfiles.graph.*;
-import com.yworks.yfiles.graph.labelmodels.ExteriorLabelModel;
-import com.yworks.yfiles.graph.labelmodels.InteriorLabelModel;
-import com.yworks.yfiles.graph.styles.IArrow;
-import com.yworks.yfiles.graph.styles.PolylineEdgeStyle;
-import com.yworks.yfiles.graph.styles.ShinyPlateNodeStyle;
-import com.yworks.yfiles.layout.circular.CircularLayout;
-import com.yworks.yfiles.layout.hierarchic.HierarchicLayout;
-import com.yworks.yfiles.layout.hierarchic.LayoutMode;
-import com.yworks.yfiles.utils.IListEnumerable;
-import com.yworks.yfiles.view.GraphComponent;
-import com.yworks.yfiles.view.HighlightIndicatorManager;
-import com.yworks.yfiles.view.input.ClickEventArgs;
-import com.yworks.yfiles.view.input.GraphViewerInputMode;
-import com.yworks.yfiles.view.input.HoveredItemChangedEventArgs;
-import com.yworks.yfiles.view.input.ItemClickedEventArgs;
+import com.sun.corba.se.impl.orbutil.ObjectWriter;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import sun.jvm.hotspot.oops.ExceptionTableElement;
 
-import javax.swing.*;
-import java.awt.*;
+import java.io.*;
 import java.util.*;
-import java.util.List;
 
 /**
  * Class that contains methods and variables to generate mappings and generates a graph of the inputted JSONObject's.
@@ -47,22 +28,18 @@ import java.util.List;
  * @author Parth Pendurkar
  * @version 1.0
  */
+@SuppressWarnings("unchecked")
 public class GraphHandler
 {
     private JSONArray jsonObjects;
-    private GraphComponent graphComponent;
     private Map<String, Set<String>> serviceToComponents; //the map of service interfaces to the set of component classes that implement them
     private Map<String, Set<String>> componentToReferences; //the map of component classes to the set of interfaces they refer to
+    private Map<String, Set<String>> componentToServices; //the map of component classes to the set of interfaces they implement
     private Map<String, Boolean> isolatedNodes; //all isolated nodes (interfaces and classes that are not linked to anything)
-
-    private ShinyPlateNodeStyle linkedNodeStyle;
-    private ShinyPlateNodeStyle isolatedNodeStyle;
-    private ShinyPlateNodeStyle interfaceNodeStyle;
-    private PolylineEdgeStyle defaultEdgeStyle;
-    private static final RectD NODE_SHELL = new RectD(10, 10, 500, 50);
-    private static final RectD GHOST_SHELL = new RectD(10, 10, 50, 50);
-
     private JSONArray catalog;
+
+    private static final String TITLE_PLACEHOLDER = "TITLE_PLACEHOLDER";
+    private static final String DATA_PLACEHOLDER = "DATA_PLACEHOLDER";
 
     /**
      * Constructor for objects of class GraphHandler.
@@ -71,24 +48,10 @@ public class GraphHandler
      */
     public GraphHandler(JSONArray jsonObjects) {
         this.jsonObjects = jsonObjects;
-        graphComponent = new GraphComponent();
         serviceToComponents = new HashMap<>();
         componentToReferences = new HashMap<>();
+        componentToServices = new HashMap<>();
         isolatedNodes = new HashMap<>();
-
-        linkedNodeStyle = new ShinyPlateNodeStyle();
-        isolatedNodeStyle = new ShinyPlateNodeStyle();
-        interfaceNodeStyle = new ShinyPlateNodeStyle();
-        defaultEdgeStyle = new PolylineEdgeStyle();
-
-        linkedNodeStyle.setPaint(Color.GREEN);
-        linkedNodeStyle.setShadowDrawingEnabled(true);
-        isolatedNodeStyle.setPaint(Color.CYAN);
-        isolatedNodeStyle.setShadowDrawingEnabled(true);
-        interfaceNodeStyle.setPaint(Color.ORANGE);
-        interfaceNodeStyle.setShadowDrawingEnabled(true);
-        defaultEdgeStyle.setTargetArrow(IArrow.DEFAULT);
-
         catalog = new JSONArray();
     }
 
@@ -102,7 +65,12 @@ public class GraphHandler
         {
             JSONObject j = (JSONObject) jsonObjects.get(i);
             //jsonInspector.toString(j); //prints out useful information to the console, uncomment if you want this information in the console
-            populateMaps(j);
+            try {
+                populateMaps(j);
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -111,7 +79,7 @@ public class GraphHandler
      *
      * @param j     the given JSONObject
      */
-    private void populateMaps(JSONObject j) {
+    private void populateMaps(JSONObject j) throws Exception {
         //getting basic information
         String className = (String) j.get("cn");
         boolean hc = (boolean) j.get("hc");
@@ -121,16 +89,22 @@ public class GraphHandler
         //if component class, modify componentToReferences Map
         if (hc) {
             List <String> fields = (List) j.get("rf");
-            Set<String> currentForC = new HashSet<>();
-            for (String name : fields)
-                currentForC.add(name); //adds the fully qualified name of the interface the annotation refers to
+            Set<String> currentForC = new HashSet<>(fields); //adds the fully qualified name of the interface the annotation refers to
             componentToReferences.put(className, currentForC);
         }
         //if service and component class, modify serviceToComponents Map
         if (hs && hc) {
             List<String> classes = (List) j.get("ic");
+
+            Set<String> classSet = new HashSet<>(classes);
+            componentToServices.put(className, classSet);
+
             String serviceTag = (String) j.get("st");
             if (!serviceTag.equals("")) {
+                Set<String> previousClassSet = componentToServices.get(className);
+                previousClassSet.add(serviceTag);
+                componentToServices.put(className, previousClassSet);
+
                 Set<String> cForIC = serviceToComponents.get(serviceTag); //gets previous Set for current implemented interface
                 if (cForIC == null)
                     cForIC = new HashSet<>(); //creates a new Set if there was no previous Set for current interface
@@ -154,169 +128,58 @@ public class GraphHandler
     /**
      * Prepares and displays the yFiles graph.
      */
-    public void prepareGraph() {
-        //populating maps
+    public void prepareGraph() throws IOException
+    {
         prepareData();
-        JFrame frame = new JFrame("- Dependency Mapper -");
-        GraphViewerInputMode graphViewerInputMode = new GraphViewerInputMode();
-        graphViewerInputMode.setClickableItems(GraphItemTypes.NODE);
-        graphViewerInputMode.getItemHoverInputMode().setEnabled(true);
-        graphViewerInputMode.getItemHoverInputMode().setHoverItems(GraphItemTypes.EDGE.or(GraphItemTypes.NODE));
-        graphViewerInputMode.getItemHoverInputMode().setInvalidItemsDiscardingEnabled(false);
+        buildComponentNodes();
 
-        //initializing the input listeners
-        //add if you want hover functionality (somewhat buggy): graphViewerInputMode.getItemHoverInputMode().addHoveredItemChangedListener(this::onHoveredItemChanged);
-        graphViewerInputMode.addItemClickedListener(this::onItemClicked);
-        graphViewerInputMode.getClickInputMode().addClickedListener(this::onNoItemClicked);
+        String index = slurp(getClass().getResourceAsStream("index.html"));
 
-        //setting visual style
-        graphComponent.getGraph().getNodeDefaults().setStyle(isolatedNodeStyle);
-        frame.setSize(800, 800);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-        frame.add(graphComponent, BorderLayout.CENTER);
-
-        IGraph graph = graphComponent.getGraph();
-        buildComponentNodes(graph);
-        HierarchicLayout layout = new HierarchicLayout(); //change this to whatever type of layout you want
-        LayoutUtilities.applyLayout(graph, layout);
-
-        graphComponent.setInputMode(graphViewerInputMode);
-
-        //setting up search frame
-        SearchHandler searchHandler = new SearchHandler(graph, graphComponent);
-        searchHandler.createAndShowGUI();
-
-        System.out.println(catalog.toJSONString());
-    }
-
-    private void onHoveredItemChanged(Object sender, HoveredItemChangedEventArgs hoveredItemChangedEventArgs) {
-        if (hoveredItemChangedEventArgs.getItem() != null) {
-            HighlightIndicatorManager manager = graphComponent.getHighlightIndicatorManager();
-            manager.clearHighlights();
-
-            IModelItem newItem = hoveredItemChangedEventArgs.getItem();
-            if (newItem != null)
-            {
-                if (newItem instanceof INode)
-                {
-                    Set<ILookup> toBeHighlighted = new HashSet<>();
-                    toBeHighlighted = highlightOutgoingNodes(newItem, toBeHighlighted, graphComponent);
-                    toBeHighlighted.stream().forEach(manager::addHighlight);
-                } else if (newItem instanceof IEdge)
-                {
-                    IEdge edge = (IEdge) newItem;
-                    manager.addHighlight(newItem);
-                    manager.addHighlight(edge.getSourceNode());
-                    manager.addHighlight(edge.getTargetNode());
-                }
-            }
-        }
+        FileWriter fw = new FileWriter("mapper.html");
+        fw.write(index.replace(TITLE_PLACEHOLDER, "title here").replace(DATA_PLACEHOLDER, catalog.toJSONString()));
+        fw.close();
     }
 
     /**
-     * Called when an item on the graph is clicked. Calls helper method to highlight 'relevant' nodes.
+     * Slurps the specified input stream into a string.
      *
-     * @param sender
-     * @param e
+     * @param stream input stream to be read
+     * @return string containing the contents of the input stream
+     * @throws IOException if issues encountered reading from the stream
      */
-    private void onItemClicked(Object sender, ItemClickedEventArgs e) {
-        HighlightIndicatorManager manager = graphComponent.getHighlightIndicatorManager();
-        manager.clearHighlights();
-
-        if (!e.isHandled())
-        {
-            Object item = e.getItem();
-            if (item instanceof INode)
-            {
-                INode node = (INode) item;
-                Set<ILookup> toBeHighlighted = new HashSet<>();
-                toBeHighlighted = highlightOutgoingNodes(node, toBeHighlighted, graphComponent);
-                toBeHighlighted.stream().forEach(manager::addHighlight);
-            }
-            //TODO: Make the below stuff work
-            else if (item instanceof IEdge)
-            {
-                IEdge edge = (IEdge) item;
-                System.out.println("edge clicked");
-                graphComponent.getGraph().addLabel(edge, (String) edge.getTag(), ExteriorLabelModel.NORTH);
-            }
+    static String slurp(InputStream stream) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        BufferedReader br = new BufferedReader(new InputStreamReader(stream));
+        String line;
+        while ((line = br.readLine()) != null) {
+            sb.append(line).append(System.lineSeparator());
         }
-    }
-
-    /**
-     * Called if mouse is clicked, but not on an item. Clears all highlights.
-     *
-     * @param sender
-     * @param c
-     */
-    private void onNoItemClicked(Object sender, ClickEventArgs c) {
-        if (graphComponent.getGraphModelManager().hitElementsAt(c.getLocation()).stream().count() == 0) {
-            HighlightIndicatorManager manager = graphComponent.getHighlightIndicatorManager();
-            manager.clearHighlights();
-            c.setHandled(true);
-        }
-    }
-
-    /**
-     * Recursive method to return a Set of all 'relevant' nodes. Gets the outbound edges from a node and calls the same method on the
-     * nodes that those edges reach, until nodes that have no outbound edges are reached. This essentially shows what is related to
-     * the class or interface that is clicked.
-     *
-     * @param item                      the current node
-     * @param oldToBeHighlighted        the old Set of what is to be highlighted
-     * @return                          the new Set of what is to be highlighted
-     */
-    public static Set highlightOutgoingNodes(IModelItem item, Set<ILookup> oldToBeHighlighted, GraphComponent graphComponent) {
-        Set<ILookup> toBeHighlighted = new HashSet<>();
-        INode node = (INode) item;
-        if (!oldToBeHighlighted.contains(node))
-            toBeHighlighted.add(node); //adds current node if not already present in old Set
-        IListEnumerable edges = graphComponent.getGraph().outEdgesAt(node); //gets outbound edges from given node
-        ArrayList<ILookup> parsedEdges = new ArrayList<>();
-        for (Object e : edges) {
-            if (!oldToBeHighlighted.contains(e))
-                parsedEdges.add((IEdge) e); //from the list of outbound edges, only gets those that have not been traversed yet
-        }
-
-        for (Object e : parsedEdges) {
-            toBeHighlighted.add((IEdge) e); //adds current parsed edge
-            toBeHighlighted.addAll(oldToBeHighlighted); //combines new Set with old Set
-            toBeHighlighted.addAll(highlightOutgoingNodes(((IEdge) e).getTargetNode(), toBeHighlighted, graphComponent)); //recursive call to target node of current outbound edge
-        }
-
-        return toBeHighlighted;
+        br.close();
+        return sb.toString();
     }
 
     /**
      * Puts all nodes in the componentToReferences Map on the given graph.
-     *
-     * @param graph     the given IGraph
      */
-    private void buildComponentNodes(IGraph graph) {
+    private void buildComponentNodes() {
         if (!componentToReferences.isEmpty()) {
             //iterates through each entry in the Map
             for (Map.Entry<String, Set<String>> entry : componentToReferences.entrySet()) {
                 String componentClassName = entry.getKey();
 
-                JSONObject newJSON = getJSONWithNameFromCatalog(componentClassName, catalog);
+                JSONObject newJSON = getJSONWithNameFromArray(componentClassName, catalog);
 
                 if (newJSON == null) {
                     newJSON = new JSONObject();
                     newJSON.put("name", componentClassName);
                     newJSON.put("dependsOn", new JSONArray());
                     newJSON.put("numberDependsOn", null);
+                    newJSON.put("dependsOnServices", new JSONArray());
                     newJSON.put("numberDependents", 0);
+                    newJSON.put("dependentsServices", new JSONArray());
                     catalog.add(newJSON);
                 }
-
-                if (!nodePresentWithName(componentClassName, graph)) {
-                    graph.createNode(NODE_SHELL, linkedNodeStyle, componentClassName);
-                }
-                INode componentNode = getNodeWithName(componentClassName, graph);
-                graph.addLabel(componentNode, componentClassName, InteriorLabelModel.CENTER);
-                linkNode(componentNode, entry.getValue(), graph, newJSON); //link the node to every interface node in its associated Set
+                linkNode(componentClassName, entry.getValue(), newJSON); //link the node to every interface node in its associated Set
             }
         }
     }
@@ -324,13 +187,22 @@ public class GraphHandler
     /**
      * Helper method to link a node to everything in its associated Set.
      *
-     * @param node      the given INode
      * @param names     the given Set
-     * @param graph     the given IGraph
      */
-    private void linkNode(INode node, Set<String> names, IGraph graph, JSONObject jsonObject) {
+    private void linkNode(String className, Set<String> names, JSONObject jsonObject) {
         String nameFromJSON = (String) jsonObject.get("name");
         JSONArray JSONarray = (JSONArray) jsonObject.get("dependsOn");
+        JSONArray dependsOnServices = (JSONArray) jsonObject.get("dependsOnServices");
+        JSONArray dependentsServices = (JSONArray) jsonObject.get("dependentsServices");
+
+        if (names != null)
+            dependsOnServices.addAll(names);
+
+
+        Set<String> dependents = componentToServices.get(className);
+        if (dependents != null)
+            dependentsServices.addAll(dependents);
+
         int dependsOn = 0;
         JSONObject jsonObject1;
 
@@ -343,31 +215,32 @@ public class GraphHandler
                         ghostJSON.put("name", name + "?");
                         ghostJSON.put("dependsOn", new JSONArray());
                         ghostJSON.put("numberDependsOn", "N/A");
+                        ghostJSON.put("dependsOnServices", new JSONArray());
                         ghostJSON.put("numberDependents", 0);
+                        List ghostServices = new ArrayList();
+                        ghostServices.add(name);
+                        ghostJSON.put("dependentsServices", new ArrayList<>(ghostServices));
                         catalog.add(ghostJSON);
                     }
-                    jsonObject1 = getJSONWithNameFromCatalog(name + "?", catalog);
+                    jsonObject1 = getJSONWithNameFromArray(name + "?", catalog);
                     JSONarray.add(name + "?");
                     int previousNumberDependents = (int) jsonObject1.get("numberDependents");
                     jsonObject1.put("numberDependents", previousNumberDependents + 1);
                     dependsOn++;
                 }
-                if (!nodePresentWithName(name + "?", graph))
-                    graph.createNode(GHOST_SHELL, isolatedNodeStyle, name + "?");
-                INode ghostNode = getNodeWithName(name + "?", graph);
-                graph.addLabel(ghostNode, "?", InteriorLabelModel.CENTER);
-                graph.createEdge(node, ghostNode, defaultEdgeStyle, name);
             }
             else {
                 for (String n : retrievedComponents) {
                     if (!stringPresentInArray(n, JSONarray) && !n.equals(nameFromJSON)) {
-                        jsonObject1 = getJSONWithNameFromCatalog(n, catalog);
+                        jsonObject1 = getJSONWithNameFromArray(n, catalog);
                         if (jsonObject1 == null) {
                             jsonObject1 = new JSONObject();
                             jsonObject1.put("name", n);
-                            jsonObject1.put("dependsOn", new JSONArray()); //TODO: Replace imports with dependsOn or something, this is just to test with online D3 tutorial
+                            jsonObject1.put("dependsOn", new JSONArray());
                             jsonObject1.put("numberDependsOn", null);
+                            jsonObject1.put("dependsOnServices", new JSONArray());
                             jsonObject1.put("numberDependents", 0);
+                            jsonObject1.put("dependentsServices", new JSONArray());
                             catalog.add(jsonObject1);
                         }
                         JSONarray.add(n);
@@ -375,39 +248,13 @@ public class GraphHandler
                         jsonObject1.put("numberDependents", previousNumberDependents + 1);
                         dependsOn++;
                     }
-                    if (!nodePresentWithName(n, graph))
-                        graph.createNode(NODE_SHELL, linkedNodeStyle, n); //if a component node with this name isn't present, create it
-                    INode nodeToLink = getNodeWithName(n, graph); //get the node to link
-                    if (nodeToLink != null) {
-                        graph.addLabel(nodeToLink, n, InteriorLabelModel.CENTER);
-                        if (node != nodeToLink) {
-                            graph.createEdge(node, nodeToLink, defaultEdgeStyle, name); //create the edge between the two component nodes
-                        }
-                    } else
-                        System.out.println("nodeToLink was null");
                 }
             }
         }
         jsonObject.put("numberDependsOn", dependsOn);
         jsonObject.put("dependsOn", JSONarray);
-    }
-
-    /**
-     * Helper method to check if node with a certain name is present in a given graph.
-     *
-     * @param name      the name to check for
-     * @param graph     the given IGraph
-     * @return          true if the node is present, else
-     *                  false
-     */
-    private boolean nodePresentWithName(String name, IGraph graph) {
-        IListEnumerable currentNodes = graph.getNodes();
-        Iterator i = currentNodes.iterator();
-        while (i.hasNext()) {
-            if (((INode) i.next()).getTag().equals(name))
-                return true;
-        }
-        return false;
+        jsonObject.put("dependsOnServices", dependsOnServices);
+        jsonObject.put("dependentsServices", dependentsServices);
     }
 
     private boolean stringPresentInArray(String value, JSONArray jsonArray) {
@@ -426,30 +273,12 @@ public class GraphHandler
         return false;
     }
 
-    private JSONObject getJSONWithNameFromCatalog(String name, JSONArray jsonArray) {
+    private JSONObject getJSONWithNameFromArray(String name, JSONArray jsonArray) {
         for (Object o : jsonArray) {
             JSONObject jsonObject = (JSONObject) o;
             if (jsonObject.get("name").equals(name))
                 return (JSONObject) o;
         }
         return null;
-    }
-
-    /**
-     * Helper method to get node with certain name in a given graph.
-     *
-     * @param name      the name of the node to get
-     * @param graph     the given IGraph
-     * @return          the INode with the tag that equals the given name
-     */
-    private INode getNodeWithName(String name, IGraph graph) {
-        IListEnumerable currentNodes = graph.getNodes();
-        Iterator i = currentNodes.iterator();
-        while (i.hasNext()) {
-            INode node = (INode) i.next();
-            if (node.getTag().equals(name)) //checks to see if the INode's tag equals the inputted name
-                return node;
-        }
-        return null; //returns null if node not found
     }
 }

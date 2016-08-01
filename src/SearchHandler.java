@@ -72,7 +72,7 @@ public class SearchHandler {
             INode node = (INode) n;
             if (node.getTag().equals(nodeName)) {
                 Set<ILookup> toBeHighlighted = new HashSet<>();
-                toBeHighlighted = GraphHandler.highlightOutgoingNodes(node, toBeHighlighted, graphComponent);
+                //toBeHighlighted = GraphHandler.highlightOutgoingNodes(node, toBeHighlighted, graphComponent);
                 graphComponent.setCurrentItem(node);
                 toBeHighlighted.stream().forEach(manager::addHighlight);
             }

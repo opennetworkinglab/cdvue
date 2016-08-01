@@ -249,7 +249,7 @@ public class DependencyParser {
     /**
      * Test method that generates a Dependency Mapper graph with the compiled JSONObjects.
      */
-    public void test() {
+    public void makeGraph() throws IOException {
         GraphHandler g = new GraphHandler(jsonObjects);
         g.prepareGraph();
     }

@@ -31,8 +31,8 @@ public class DependencyMapper {
             p.execute();
 
             System.out.println("Execution complete. JSON's compiled.");
-            System.out.println("Testing...");
-            p.test();
+            System.out.println("Making Graph...");
+            p.makeGraph();
         }
         catch (Exception e) {
             System.out.println("Execution failed.");
