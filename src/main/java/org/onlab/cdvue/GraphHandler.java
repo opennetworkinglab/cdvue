@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.onlab.cdm;
+package org.onlab.cdvue;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -39,9 +39,11 @@ class GraphHandler
 
     private static final String TITLE_PLACEHOLDER = "TITLE_PLACEHOLDER";
     private static final String DATA_PLACEHOLDER = "DATA_PLACEHOLDER";
+    private static final String D3JS_PLACEHOLDER = "D3JS_PLACEHOLDER";
+    private static final String D3JS = "d3.v3.min.js";
 
     /**
-     * Constructor for objects of class org.onlab.cdm.GraphHandler.
+     * Constructor for objects of class org.onlab.cdvue.GraphHandler.
      *
      * @param jsonObjects       the list of (specifically organized) JSONObject's to generate the graph from
      */
@@ -55,10 +57,10 @@ class GraphHandler
     }
 
     /**
-     * Iteratively populates the two maps with each JSONObject. Also inspects them with a org.onlab.cdm.JSONInspector object.
+     * Iteratively populates the two maps with each JSONObject. Also inspects them with a org.onlab.cdvue.JSONInspector object.
      */
     private void prepareData() {
-        //org.onlab.cdm.JSONInspector jsonInspector = new org.onlab.cdm.JSONInspector(); //uncomment this and the line below to get useful information in the console
+        //org.onlab.cdvue.JSONInspector jsonInspector = new org.onlab.cdvue.JSONInspector(); //uncomment this and the line below to get useful information in the console
 
         for (Object jsonObject : jsonObjects)
         {
@@ -132,9 +134,10 @@ class GraphHandler
         buildComponentNodes();
 
         String index = slurp(getClass().getResourceAsStream("/index.html"));
+        String d3js = slurp(getClass().getResourceAsStream("/" + D3JS));
 
         FileWriter fw = new FileWriter("mapper.html");
-        fw.write(index.replace(TITLE_PLACEHOLDER, "title here").replace(DATA_PLACEHOLDER, catalog.toJSONString()));
+        fw.write(index.replace(TITLE_PLACEHOLDER, "Dependency Mapper").replace(D3JS_PLACEHOLDER, d3js).replace(DATA_PLACEHOLDER, catalog.toJSONString()));
         fw.close();
     }
 

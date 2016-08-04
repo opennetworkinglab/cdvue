@@ -1,4 +1,3 @@
-/Users/parthpendurkar/Desktop/Component Dependency Mapper/src/main/java/org/onlab/cdm/JSONInspector.java
-/Users/parthpendurkar/Desktop/Component Dependency Mapper/src/main/java/org/onlab/cdm/DependencyParser.java
-/Users/parthpendurkar/Desktop/Component Dependency Mapper/src/main/java/org/onlab/cdm/GraphHandler.java
-/Users/parthpendurkar/Desktop/Component Dependency Mapper/src/main/java/org/onlab/cdm/DependencyMapper.java
+/Users/parthpendurkar/Desktop/CDM/Component Dependency Mapper/src/main/java/org/onlab/cdvue/GraphHandler.java
+/Users/parthpendurkar/Desktop/CDM/Component Dependency Mapper/src/main/java/org/onlab/cdvue/DependencyParser.java
+/Users/parthpendurkar/Desktop/CDM/Component Dependency Mapper/src/main/java/org/onlab/cdvue/DependencyMapper.java

@@ -13,9 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.onlab.cdm;
-
-import java.util.Scanner;
+package org.onlab.cdvue;
 
 /**
  * Class that runs the Dependency Mapper Tool.
@@ -43,10 +41,8 @@ public class DependencyMapper {
 
     public static void main(String[] args) {
         DependencyMapper m = new DependencyMapper();
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Input the path to the java file(s):");
-        String path = sc.nextLine();
         try {
+            String path = args[0];
             m.processDirectory(path);
         }
         catch (Exception e) {

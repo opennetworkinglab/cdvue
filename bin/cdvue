@@ -1,0 +1,22 @@
+#!/bin/bash
+#-------------------------------------------------------------------------------
+#   Component Dependency Mapper
+#
+#   written by Thomas Vachuska, Parth Pendurkar
+#                                                                    -- Doobs --
+#-------------------------------------------------------------------------------
+
+CDVUE_ROOT=${CDVUE_ROOT:-$(dirname $0)/..}
+cd $CDVUE_ROOT
+VER=1.0-SNAPSHOT
+JAR="$PWD/target/cdvue-${VER}.jar" # start with the dev jar first
+cd - >/dev/null
+
+# If the dev jar is not available, use one from .m2/repository
+[ -f "${JAR}" ] || JAR=~/.m2/repository/org/onosproject/cdvue/${VER}/cdvue-${VER}.jar
+
+# Assume default project to be the base-name of the argument or of current dir
+name=$(basename ${1:-$PWD})
+
+# Now run the Java Dependency Viewer jar on the catalog
+java -jar "${JAR}" $1 && mv mapper.html $name.html && open $name.html

@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36ae5c05-d34c-4c0e-ba70-1c338d3c21ee" name="Default" comment="" />
+    <list default="true" id="36ae5c05-d34c-4c0e-ba70-1c338d3c21ee" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/mapper.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Component Dependency Mapper/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/onlab/cdm/DependencyMapper.java" afterPath="$PROJECT_DIR$/src/main/java/org/onlab/cdvue/DependencyMapper.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/onlab/cdm/DependencyParser.java" afterPath="$PROJECT_DIR$/src/main/java/org/onlab/cdvue/DependencyParser.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/onlab/cdm/GraphHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/onlab/cdvue/GraphHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/com_googlecode_json_simple_json_simple_1_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/com_googlecode_json_simple_json_simple_1_1_1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/com_thoughtworks_qdox_qdox_2_0_M3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/com_thoughtworks_qdox_qdox_2_0_M3.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/index.html" afterPath="$PROJECT_DIR$/src/main/resources/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/index.html" afterPath="$PROJECT_DIR$/target/classes/index.html" />
+    </list>
     <ignored path="Component Dependency Mapper.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -29,27 +45,78 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+            <state relative-caret-position="90">
+              <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DependencyMapper.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/onlab/cdm/DependencyMapper.java">
+      <file leaf-file-name="DependencyMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/onlab/cdvue/DependencyMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+            <state relative-caret-position="450">
+              <caret line="44" column="34" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cdvue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bin/cdvue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-337">
+              <caret line="115" column="0" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="core.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="337">
+              <caret line="122" column="47" selection-start-line="122" selection-start-column="47" selection-end-line="122" selection-end-column="47" />
+              <folding>
+                <marker date="1470351493000" expanded="true" signature="148672:209022" ph="..." />
+                <marker date="1470351493000" expanded="true" signature="206104:206652" ph="{...}" />
+                <marker date="1470351493000" expanded="true" signature="206677:206849" ph="{...}" />
+                <marker date="1470351493000" expanded="true" signature="206872:207457" ph="{...}" />
+                <marker date="1470351493000" expanded="true" signature="207043:207088" ph="{...}" />
+                <marker date="1470351493000" expanded="true" signature="207287:207332" ph="{...}" />
+                <marker date="1470351493000" expanded="true" signature="207482:207574" ph="{...}" />
+                <marker date="1470351493000" expanded="true" signature="207602:207918" ph="{...}" />
+                <marker date="1470351493000" expanded="true" signature="207636:207708" ph="{...}" />
+                <marker date="1470351493000" expanded="true" signature="207732:207840" ph="{...}" />
+                <marker date="1470351493000" expanded="true" signature="207846:207912" ph="{...}" />
+                <marker date="1470351493000" expanded="true" signature="208079:208532" ph="{...}" />
+                <marker date="1470351493000" expanded="true" signature="208126:208451" ph="{...}" />
+                <marker date="1470351493000" expanded="true" signature="208172:208430" ph="{...}" />
+                <marker date="1470351493000" expanded="true" signature="208258:208424" ph="{...}" />
+                <marker date="1470351493000" expanded="true" signature="208483:208509" ph="{...}" />
+                <marker date="1470351493000" expanded="true" signature="208623:209013" ph="{...}" />
+                <marker date="1470351493000" expanded="true" signature="208730:208756" ph="{...}" />
+                <marker date="1470351493000" expanded="true" signature="208859:208988" ph="{...}" />
+                <marker date="1470351493000" expanded="true" signature="208914:208982" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="DependencyParser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/onlab/cdm/DependencyParser.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/onlab/cdvue/DependencyParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
+            <state relative-caret-position="224">
               <caret line="56" column="5" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
               <folding />
             </state>
@@ -57,10 +124,10 @@
         </entry>
       </file>
       <file leaf-file-name="GraphHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/onlab/cdm/GraphHandler.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/onlab/cdvue/GraphHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1680">
-              <caret line="130" column="15" selection-start-line="130" selection-start-column="15" selection-end-line="130" selection-end-column="15" />
+            <state relative-caret-position="1815">
+              <caret line="139" column="60" selection-start-line="139" selection-start-column="60" selection-end-line="139" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -103,9 +170,13 @@
         <option value="$PROJECT_DIR$/src/org/onlab/cdm/DependencyParser.java" />
         <option value="$PROJECT_DIR$/src/org/onlab/cdm/GraphHandler.java" />
         <option value="$PROJECT_DIR$/src/org/onlab/cdm/JSONInspector.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/org/onlab/cdm/DependencyParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/onlab/cdm/GraphHandler.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/org/onlab/cdvue/DependencyMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/index.html" />
+        <option value="$PROJECT_DIR$/src/main/java/org/onlab/cdvue/GraphHandler.java" />
+        <option value="$PROJECT_DIR$/bin/cdvue" />
       </list>
     </option>
   </component>
@@ -157,17 +228,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Component Dependency Mapper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -234,13 +296,58 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cdm" />
+              <option name="myItemId" value="cdvue" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Component Dependency Mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Component Dependency Mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="out" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="production" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Component Dependency Mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Component Dependency Mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Component Dependency Mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Component Dependency Mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -260,21 +367,22 @@
     <property name="Repository.Attach.Sources" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources" />
-      <recent name="$PROJECT_DIR$/src" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.onlab.cdm" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunManager" selected="Application.DependencyMapper">
     <configuration default="false" name="DependencyMapper" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="org.onlab.cdm.DependencyMapper" />
+      <option name="MAIN_CLASS_NAME" value="org.onlab.cdvue.DependencyMapper" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -776,6 +884,8 @@
       <workItem from="1470078759231" duration="95000" />
       <workItem from="1470082334240" duration="4166000" />
       <workItem from="1470168641622" duration="2041000" />
+      <workItem from="1470177344976" duration="277000" />
+      <workItem from="1470348415841" duration="2826000" />
     </task>
     <task id="LOCAL-00001" summary="small json dictionary fix">
       <created>1467740867647</created>
@@ -795,7 +905,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="197199000" />
+    <option name="totallyTimeSpent" value="200302000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -808,7 +918,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="734" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32866043" sideWeight="0.49353796" order="6" side_tool="false" content_ui="tabs" />
@@ -817,14 +927,13 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52180684" sideWeight="0.503231" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2556391" sideWeight="0.4838449" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2554517" sideWeight="0.4838449" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.50155765" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.50155765" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2786753" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32866043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973376" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -836,6 +945,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32866043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -864,118 +974,18 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/src.zip!/java/util/function/Consumer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="48" column="9" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/library/SourceFolderLibrary.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="15" column="98" selection-start-line="15" selection-start-column="98" selection-end-line="15" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/impl/DefaultJavaSource.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="56" column="94" selection-start-line="56" selection-start-column="94" selection-end-line="56" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/impl/AbstractBaseJavaEntity.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="13" column="88" selection-start-line="13" selection-start-column="88" selection-end-line="13" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/impl/DefaultJavaTypeVariable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="30" column="28" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/impl/DefaultJavaParameterizedType.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="6" column="90" selection-start-line="6" selection-start-column="90" selection-end-line="6" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/impl/DefaultJavaField.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="21" column="60" selection-start-line="21" selection-start-column="60" selection-end-line="21" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/yfiles-for-java.jar!/com/yworks/yfiles/graph/INode.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/yfiles-for-java.jar!/com/yworks/yfiles/utils/IListEnumerable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/yfiles-for-java.jar!/com/yworks/yfiles/utils/IEnumerable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/yfiles-for-java.jar!/com/yworks/yfiles/graph/styles/INodeStyle.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/yfiles-for-java.jar!/com/yworks/yfiles/graph/styles/ShinyPlateNodeStyle.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="7" column="79" selection-start-line="7" selection-start-column="79" selection-end-line="7" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/yfiles-for-java.jar!/com/yworks/yfiles/graph/styles/IArrow.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="19" column="55" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/yfiles-for-java.jar!/com/yworks/yfiles/view/input/GraphViewerInputMode.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/yfiles-for-java.jar!/com/yworks/yfiles/view/input/m.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/yfiles-for-java.jar!/com/yworks/yfiles/view/input/GraphEditorInputMode.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="7" column="72" selection-start-line="7" selection-start-column="72" selection-end-line="7" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/impl/DefaultJavaTypeVariable.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/impl/DefaultJavaParameterizedType.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/impl/DefaultJavaField.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/yfiles-for-java.jar!/com/yworks/yfiles/graph/INode.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/yfiles-for-java.jar!/com/yworks/yfiles/utils/IListEnumerable.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/yfiles-for-java.jar!/com/yworks/yfiles/utils/IEnumerable.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/yfiles-for-java.jar!/com/yworks/yfiles/graph/styles/INodeStyle.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/yfiles-for-java.jar!/com/yworks/yfiles/graph/styles/ShinyPlateNodeStyle.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/yfiles-for-java.jar!/com/yworks/yfiles/graph/styles/IArrow.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/yfiles-for-java.jar!/com/yworks/yfiles/view/input/GraphViewerInputMode.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/yfiles-for-java.jar!/com/yworks/yfiles/view/input/m.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/yfiles-for-java.jar!/com/yworks/yfiles/view/input/GraphEditorInputMode.class" />
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/src.zip!/java/lang/Iterable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -984,41 +994,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../yFiles-for-Java-Complete-3.0.0.1-Evaluation/demos/src/viewer/graphviewer/GraphViewerDemo.java" />
-    <entry file="jar://$PROJECT_DIR$/lib/yfiles-for-java.jar!/com/yworks/yfiles/view/GraphComponent.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="62" column="22" selection-start-line="62" selection-start-column="22" selection-end-line="62" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/impl/AbstractJavaEntity.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="45" column="39" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/impl/DefaultJavaAnnotation.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="35" column="102" selection-start-line="35" selection-start-column="102" selection-end-line="35" selection-end-column="102" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/impl/DefaultJavaType.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/expression/TypeRef.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="13" column="40" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/yfiles-for-java.jar!/com/yworks/yfiles/view/GraphComponent.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/impl/AbstractJavaEntity.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/impl/DefaultJavaAnnotation.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/impl/DefaultJavaType.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/expression/TypeRef.class" />
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/src.zip!/java/util/Collections.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="93">
@@ -1040,76 +1020,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/impl/DefaultJavaClass.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="44" column="82" selection-start-line="44" selection-start-column="74" selection-end-line="44" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/JavaClass.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="49" column="64" selection-start-line="49" selection-start-column="64" selection-end-line="49" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/json-simple-1.1.1.jar!/org/json/simple/JSONArray.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/library/SourceLibrary.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/library/ClassNameLibrary.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/library/JavaClassContext.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/library/AbstractClassLibrary.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/library/ClassLoaderLibrary.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/library/SortedClassLibraryBuilder.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/JavaProjectBuilder.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/impl/DefaultJavaClass.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/model/JavaClass.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/json-simple-1.1.1.jar!/org/json/simple/JSONArray.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/library/SourceLibrary.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/library/ClassNameLibrary.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/library/JavaClassContext.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/library/AbstractClassLibrary.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/library/ClassLoaderLibrary.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/library/SortedClassLibraryBuilder.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/qdox-2.0-M3.jar!/com/thoughtworks/qdox/JavaProjectBuilder.class" />
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/src.zip!/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2235">
@@ -1119,46 +1039,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SearchHandler.java" />
     <entry file="file://$PROJECT_DIR$/src/SearchPanel.java" />
-    <entry file="file://$PROJECT_DIR$/src/org/onlab/cdm/DependencyMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="2" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/onlab/cdm/DependencyParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/onlab/cdm/GraphHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/onlab/cdm/JSONInspector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/onlab/cdm/DependencyMapper.java" />
+    <entry file="file://$PROJECT_DIR$/src/org/onlab/cdm/DependencyParser.java" />
+    <entry file="file://$PROJECT_DIR$/src/org/onlab/cdm/GraphHandler.java" />
+    <entry file="file://$PROJECT_DIR$/src/org/onlab/cdm/JSONInspector.java" />
     <entry file="file://$PROJECT_DIR$/mapper.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1108">
@@ -1175,42 +1059,96 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/onlab/cdm/JSONInspector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/onlab/cdm/JSONInspector.java" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+        <state relative-caret-position="90">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/onlab/cdm/DependencyParser.java">
+    <entry file="file://$PROJECT_DIR$/out/production/Component Dependency Mapper/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
+        <state relative-caret-position="-1335">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/d3.v3.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="0" column="742" selection-start-line="0" selection-start-column="742" selection-end-line="0" selection-end-column="742" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="122" column="47" selection-start-line="122" selection-start-column="47" selection-end-line="122" selection-end-column="47" />
+          <folding>
+            <marker date="1470351493000" expanded="true" signature="148672:209022" ph="..." />
+            <marker date="1470351493000" expanded="true" signature="206104:206652" ph="{...}" />
+            <marker date="1470351493000" expanded="true" signature="206677:206849" ph="{...}" />
+            <marker date="1470351493000" expanded="true" signature="206872:207457" ph="{...}" />
+            <marker date="1470351493000" expanded="true" signature="207043:207088" ph="{...}" />
+            <marker date="1470351493000" expanded="true" signature="207287:207332" ph="{...}" />
+            <marker date="1470351493000" expanded="true" signature="207482:207574" ph="{...}" />
+            <marker date="1470351493000" expanded="true" signature="207602:207918" ph="{...}" />
+            <marker date="1470351493000" expanded="true" signature="207636:207708" ph="{...}" />
+            <marker date="1470351493000" expanded="true" signature="207732:207840" ph="{...}" />
+            <marker date="1470351493000" expanded="true" signature="207846:207912" ph="{...}" />
+            <marker date="1470351493000" expanded="true" signature="208079:208532" ph="{...}" />
+            <marker date="1470351493000" expanded="true" signature="208126:208451" ph="{...}" />
+            <marker date="1470351493000" expanded="true" signature="208172:208430" ph="{...}" />
+            <marker date="1470351493000" expanded="true" signature="208258:208424" ph="{...}" />
+            <marker date="1470351493000" expanded="true" signature="208483:208509" ph="{...}" />
+            <marker date="1470351493000" expanded="true" signature="208623:209013" ph="{...}" />
+            <marker date="1470351493000" expanded="true" signature="208730:208756" ph="{...}" />
+            <marker date="1470351493000" expanded="true" signature="208859:208988" ph="{...}" />
+            <marker date="1470351493000" expanded="true" signature="208914:208982" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-337">
+          <caret line="115" column="0" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/onlab/cdvue/DependencyMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="44" column="34" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/onlab/cdvue/DependencyParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
           <caret line="56" column="5" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/onlab/cdm/GraphHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/onlab/cdvue/GraphHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1680">
-          <caret line="130" column="15" selection-start-line="130" selection-start-column="15" selection-end-line="130" selection-end-column="15" />
+        <state relative-caret-position="1815">
+          <caret line="139" column="60" selection-start-line="139" selection-start-column="60" selection-end-line="139" selection-end-column="60" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/onlab/cdm/DependencyMapper.java">
+    <entry file="file://$PROJECT_DIR$/bin/cdvue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+        <state relative-caret-position="60">
+          <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
           <folding />
         </state>
       </provider>
