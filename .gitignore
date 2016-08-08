@@ -1,7 +1,15 @@
+*~
 *.class
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+.classpath
+.project
+.settings
+.javacp*
+.checkstyle
+target
+*.iml
+dependency-reduced-pom.xml
+.idea
+*.DS_Store
 
 # Package Files #
 *.jar
