@@ -15,6 +15,8 @@
  */
 package org.onlab.cdvue;
 
+import java.util.Objects;
+
 /**
  * Class that runs the Dependency Mapper Tool.
  *
@@ -23,19 +25,27 @@ package org.onlab.cdvue;
  */
 public class DependencyMapper {
 
+    private static boolean debugOn = Objects.equals("true", System.getenv("cdvueDebug"));
+
     private void processDirectory(String path) throws Exception {
         DependencyParser p = new DependencyParser(path);
         try {
-            System.out.println("Executing.");
+            println("Executing.");
             p.execute();
 
-            System.out.println("Execution complete. JSON's compiled.");
-            System.out.println("Making Graph...");
+            println("Execution complete. JSON's compiled.");
+            println("Making Graph...");
             p.makeGraph();
         }
         catch (Exception e) {
-            System.out.println("Execution failed.");
+            println("Execution failed.");
             e.printStackTrace();
+        }
+    }
+
+    static void println(String s) {
+        if (debugOn) {
+            System.out.println(s);
         }
     }
 
@@ -46,7 +56,7 @@ public class DependencyMapper {
             m.processDirectory(path);
         }
         catch (Exception e) {
-            System.out.println("Could not process files...");
+            println("Could not process files...");
             e.printStackTrace();
         }
     }

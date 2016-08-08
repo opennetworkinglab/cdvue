@@ -28,6 +28,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.onlab.cdvue.DependencyMapper.println;
+
 /**
  * Class that contains methods and variables to parse through the java files in an inputted filepath and fill out an array of JSONObjects for later use.
  *
@@ -61,7 +63,7 @@ class DependencyParser {
             builder.getClasses().forEach(this::processClass);
         }
         catch (Exception e) {
-            System.out.println("Couldn't find any java files.");
+            println("Couldn't find any java files.");
             e.printStackTrace();
             throw e;
         }
@@ -78,8 +80,8 @@ class DependencyParser {
         String fullyClassifiedName = javaClass.getFullyQualifiedName();
         JSONObject jsonObject = new JSONObject();
 
-        System.out.println("");
-        System.out.println("Processing class: " + fullyClassifiedName + ".");
+        println("");
+        println("Processing class: " + fullyClassifiedName + ".");
 
         //default values to be loaded into the JSONObject
         boolean isComponent = containsClassAnnotation(javaClass, "Component");
@@ -111,19 +113,19 @@ class DependencyParser {
             }
 
             if (isComponent || isService) {
-                System.out.println("The class has " + classAnnotations.size() + " annotations, and one of them is either Component or Service.");
+                println("The class has " + classAnnotations.size() + " annotations, and one of them is either Component or Service.");
                 List<String> lines = new ArrayList<>();
-                System.out.println("The class has: " + fields.size() + " fields.");
+                println("The class has: " + fields.size() + " fields.");
 
                 //processes each field of the JavaClass
                 for (JavaField field : fields)
                     processField(lines, referenceFields, field);
             }
             else
-                System.out.println("The class has " + classAnnotations.size() + " annotations, but none of them are Component nor Service.");
+                println("The class has " + classAnnotations.size() + " annotations, but none of them are Component nor Service.");
         }
         else
-            System.out.println("This class has no annotations.");
+            println("This class has no annotations.");
 
         //compiles the JSONObject
         jsonObject.put("cn", fullyClassifiedName); //ease of access to get class's fully classified name
@@ -146,12 +148,12 @@ class DependencyParser {
      * @param field                 the field to be processed.
      */
     private void processField(List<String> lines, List<String> referenceFields, JavaField field) {
-        System.out.println("");
-        System.out.println("Processing field.");
+        println("");
+        println("Processing field.");
 
         //gets all annotations of the given field
         List<JavaAnnotation> annotations = field.getAnnotations();
-        System.out.println("The field " + field.getType().getName() + " has " + annotations.size() + " annotations.");
+        println("The field " + field.getType().getName() + " has " + annotations.size() + " annotations.");
 
         //filters out all annotations that aren't @Reference. Adds all @Reference annotations to both the given String and JavaField Lists.
         annotations.stream().filter(ja -> (ja.getType().getName().equals("org.apache.felix.scr.annotations.Reference") || ja.getType().getName().equals("Reference"))).forEach(ja -> {

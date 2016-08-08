@@ -2,21 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36ae5c05-d34c-4c0e-ba70-1c338d3c21ee" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mapper.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Component Dependency Mapper/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/onlab/cdm/DependencyMapper.java" afterPath="$PROJECT_DIR$/src/main/java/org/onlab/cdvue/DependencyMapper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/onlab/cdm/DependencyParser.java" afterPath="$PROJECT_DIR$/src/main/java/org/onlab/cdvue/DependencyParser.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/onlab/cdm/GraphHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/onlab/cdvue/GraphHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/com_googlecode_json_simple_json_simple_1_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/com_googlecode_json_simple_json_simple_1_1_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/com_thoughtworks_qdox_qdox_2_0_M3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/com_thoughtworks_qdox_qdox_2_0_M3.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/index.html" afterPath="$PROJECT_DIR$/src/main/resources/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/index.html" afterPath="$PROJECT_DIR$/target/classes/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/onlab/cdvue/DependencyMapper.java" afterPath="$PROJECT_DIR$/src/main/java/org/onlab/cdvue/DependencyMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/onlab/cdvue/DependencyParser.java" afterPath="$PROJECT_DIR$/src/main/java/org/onlab/cdvue/DependencyParser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/onlab/cdvue/GraphHandler.java" afterPath="$PROJECT_DIR$/src/main/java/org/onlab/cdvue/GraphHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
     </list>
     <ignored path="Component Dependency Mapper.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,17 +42,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DependencyMapper.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DependencyMapper.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/onlab/cdvue/DependencyMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="44" column="34" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
+            <state relative-caret-position="390">
+              <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cdvue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cdvue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/cdvue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
@@ -75,7 +65,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-337">
+            <state relative-caret-position="1725">
               <caret line="115" column="0" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
               <folding />
             </state>
@@ -85,29 +75,10 @@
       <file leaf-file-name="core.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
+            <state relative-caret-position="1830">
               <caret line="122" column="47" selection-start-line="122" selection-start-column="47" selection-end-line="122" selection-end-column="47" />
               <folding>
-                <marker date="1470351493000" expanded="true" signature="148672:209022" ph="..." />
-                <marker date="1470351493000" expanded="true" signature="206104:206652" ph="{...}" />
-                <marker date="1470351493000" expanded="true" signature="206677:206849" ph="{...}" />
-                <marker date="1470351493000" expanded="true" signature="206872:207457" ph="{...}" />
-                <marker date="1470351493000" expanded="true" signature="207043:207088" ph="{...}" />
-                <marker date="1470351493000" expanded="true" signature="207287:207332" ph="{...}" />
-                <marker date="1470351493000" expanded="true" signature="207482:207574" ph="{...}" />
-                <marker date="1470351493000" expanded="true" signature="207602:207918" ph="{...}" />
-                <marker date="1470351493000" expanded="true" signature="207636:207708" ph="{...}" />
-                <marker date="1470351493000" expanded="true" signature="207732:207840" ph="{...}" />
-                <marker date="1470351493000" expanded="true" signature="207846:207912" ph="{...}" />
-                <marker date="1470351493000" expanded="true" signature="208079:208532" ph="{...}" />
-                <marker date="1470351493000" expanded="true" signature="208126:208451" ph="{...}" />
-                <marker date="1470351493000" expanded="true" signature="208172:208430" ph="{...}" />
-                <marker date="1470351493000" expanded="true" signature="208258:208424" ph="{...}" />
-                <marker date="1470351493000" expanded="true" signature="208483:208509" ph="{...}" />
-                <marker date="1470351493000" expanded="true" signature="208623:209013" ph="{...}" />
-                <marker date="1470351493000" expanded="true" signature="208730:208756" ph="{...}" />
-                <marker date="1470351493000" expanded="true" signature="208859:208988" ph="{...}" />
-                <marker date="1470351493000" expanded="true" signature="208914:208982" ph="{...}" />
+                <marker date="1470690251000" expanded="true" signature="148672:209022" ph="..." />
               </folding>
             </state>
           </provider>
@@ -116,8 +87,8 @@
       <file leaf-file-name="DependencyParser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/onlab/cdvue/DependencyParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="56" column="5" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
+            <state relative-caret-position="-420">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -126,8 +97,8 @@
       <file leaf-file-name="GraphHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/onlab/cdvue/GraphHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1815">
-              <caret line="139" column="60" selection-start-line="139" selection-start-column="60" selection-end-line="139" selection-end-column="60" />
+            <state relative-caret-position="116">
+              <caret line="245" column="0" selection-start-line="245" selection-start-column="0" selection-end-line="245" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -173,10 +144,11 @@
         <option value="$PROJECT_DIR$/src/main/java/org/onlab/cdm/DependencyParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/onlab/cdm/GraphHandler.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/org/onlab/cdvue/DependencyMapper.java" />
         <option value="$PROJECT_DIR$/src/main/resources/index.html" />
-        <option value="$PROJECT_DIR$/src/main/java/org/onlab/cdvue/GraphHandler.java" />
         <option value="$PROJECT_DIR$/bin/cdvue" />
+        <option value="$PROJECT_DIR$/src/main/java/org/onlab/cdvue/DependencyParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/onlab/cdvue/GraphHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/onlab/cdvue/DependencyMapper.java" />
       </list>
     </option>
   </component>
@@ -228,8 +200,16 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Component Dependency Mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -338,16 +318,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Component Dependency Mapper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -886,6 +858,8 @@
       <workItem from="1470168641622" duration="2041000" />
       <workItem from="1470177344976" duration="277000" />
       <workItem from="1470348415841" duration="2826000" />
+      <workItem from="1470688318847" duration="293000" />
+      <workItem from="1470689703050" duration="592000" />
     </task>
     <task id="LOCAL-00001" summary="small json dictionary fix">
       <created>1467740867647</created>
@@ -905,7 +879,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="200302000" />
+    <option name="totallyTimeSpent" value="201187000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -922,7 +896,6 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32866043" sideWeight="0.49353796" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32866043" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52180684" sideWeight="0.503231" order="7" side_tool="true" content_ui="tabs" />
@@ -944,6 +917,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32866043" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32866043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1043,14 +1017,7 @@
     <entry file="file://$PROJECT_DIR$/src/org/onlab/cdm/DependencyParser.java" />
     <entry file="file://$PROJECT_DIR$/src/org/onlab/cdm/GraphHandler.java" />
     <entry file="file://$PROJECT_DIR$/src/org/onlab/cdm/JSONInspector.java" />
-    <entry file="file://$PROJECT_DIR$/mapper.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1108">
-          <caret line="145" column="55208" selection-start-line="145" selection-start-column="55208" selection-end-line="145" selection-end-column="55208" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mapper.html" />
     <entry file="file://$PROJECT_DIR$/dependency-reduced-pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1068,79 +1035,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/out/production/Component Dependency Mapper/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1335">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/Component Dependency Mapper/index.html" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/d3.v3.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="0" column="742" selection-start-line="0" selection-start-column="742" selection-end-line="0" selection-end-column="742" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
+        <state relative-caret-position="1830">
           <caret line="122" column="47" selection-start-line="122" selection-start-column="47" selection-end-line="122" selection-end-column="47" />
           <folding>
-            <marker date="1470351493000" expanded="true" signature="148672:209022" ph="..." />
-            <marker date="1470351493000" expanded="true" signature="206104:206652" ph="{...}" />
-            <marker date="1470351493000" expanded="true" signature="206677:206849" ph="{...}" />
-            <marker date="1470351493000" expanded="true" signature="206872:207457" ph="{...}" />
-            <marker date="1470351493000" expanded="true" signature="207043:207088" ph="{...}" />
-            <marker date="1470351493000" expanded="true" signature="207287:207332" ph="{...}" />
-            <marker date="1470351493000" expanded="true" signature="207482:207574" ph="{...}" />
-            <marker date="1470351493000" expanded="true" signature="207602:207918" ph="{...}" />
-            <marker date="1470351493000" expanded="true" signature="207636:207708" ph="{...}" />
-            <marker date="1470351493000" expanded="true" signature="207732:207840" ph="{...}" />
-            <marker date="1470351493000" expanded="true" signature="207846:207912" ph="{...}" />
-            <marker date="1470351493000" expanded="true" signature="208079:208532" ph="{...}" />
-            <marker date="1470351493000" expanded="true" signature="208126:208451" ph="{...}" />
-            <marker date="1470351493000" expanded="true" signature="208172:208430" ph="{...}" />
-            <marker date="1470351493000" expanded="true" signature="208258:208424" ph="{...}" />
-            <marker date="1470351493000" expanded="true" signature="208483:208509" ph="{...}" />
-            <marker date="1470351493000" expanded="true" signature="208623:209013" ph="{...}" />
-            <marker date="1470351493000" expanded="true" signature="208730:208756" ph="{...}" />
-            <marker date="1470351493000" expanded="true" signature="208859:208988" ph="{...}" />
-            <marker date="1470351493000" expanded="true" signature="208914:208982" ph="{...}" />
+            <marker date="1470690251000" expanded="true" signature="148672:209022" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-337">
+        <state relative-caret-position="1725">
           <caret line="115" column="0" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/onlab/cdvue/DependencyMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="44" column="34" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/onlab/cdvue/DependencyParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="56" column="5" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/onlab/cdvue/GraphHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1815">
-          <caret line="139" column="60" selection-start-line="139" selection-start-column="60" selection-end-line="139" selection-end-column="60" />
           <folding />
         </state>
       </provider>
@@ -1149,6 +1065,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/onlab/cdvue/DependencyParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-420">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/onlab/cdvue/GraphHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="245" column="0" selection-start-line="245" selection-start-column="0" selection-end-line="245" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/onlab/cdvue/DependencyMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
           <folding />
         </state>
       </provider>

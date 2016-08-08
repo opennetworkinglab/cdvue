@@ -21,6 +21,8 @@ import org.json.simple.JSONObject;
 import java.io.*;
 import java.util.*;
 
+import static org.onlab.cdvue.DependencyMapper.println;
+
 /**
  * Class that contains methods and variables to generate mappings and generates a graph of the inputted JSONObject's.
  *
@@ -239,7 +241,7 @@ class GraphHandler
             }
         }
         else {
-            System.out.println("Names was null");
+            println("Names was null");
         }
 
         jsonObject.put("numberDependsOn", dependsOn);
