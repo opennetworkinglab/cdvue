@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.onlab.cdvue;
 
 import com.thoughtworks.qdox.JavaProjectBuilder;
@@ -42,7 +43,7 @@ class DependencyParser {
     private JSONArray jsonObjects;
 
     /**
-     * Constructor for objects of class org.onlab.cdvue.DependencyParser.
+     * Constructor for objects of class DependencyParser.
      *
      * @param path      the path to process
      */

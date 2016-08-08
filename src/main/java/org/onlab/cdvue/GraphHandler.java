@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.onlab.cdvue;
 
 import org.json.simple.JSONArray;
@@ -45,7 +46,7 @@ class GraphHandler
     private static final String D3JS = "d3.v3.min.js";
 
     /**
-     * Constructor for objects of class org.onlab.cdvue.GraphHandler.
+     * Constructor for objects of class GraphHandler.
      *
      * @param jsonObjects       the list of (specifically organized) JSONObject's to generate the graph from
      */
@@ -62,17 +63,13 @@ class GraphHandler
      * Iteratively populates the two maps with each JSONObject. Also inspects them with a org.onlab.cdvue.JSONInspector object.
      */
     private void prepareData() {
-        //org.onlab.cdvue.JSONInspector jsonInspector = new org.onlab.cdvue.JSONInspector(); //uncomment this and the line below to get useful information in the console
 
-        for (Object jsonObject : jsonObjects)
-        {
+        for (Object jsonObject : jsonObjects) {
             JSONObject j = (JSONObject) jsonObject;
-            //jsonInspector.toString(j); //prints out useful information to the console, uncomment if you want this information in the console
-            try
-            {
+            try {
                 populateMaps(j);
-            } catch (Exception e)
-            {
+            }
+            catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -130,8 +127,7 @@ class GraphHandler
     /**
      * Prepares and displays the yFiles graph.
      */
-    void prepareGraph() throws IOException
-    {
+    void prepareGraph() throws IOException {
         prepareData();
         buildComponentNodes();
 
