@@ -10,6 +10,8 @@ To get started, clone this repository and set your bash_profile path variable to
 
 After setting your path, you can simply use the terminal command "cdvue" followed by a path to a directory of a Java project to analyze. An HTML file will be generated and opened to view the how the Component classes in the project relate to one another.
 
+If you want a full log of everything that is going on while generating the HTML file, simply add "cdvueDebug=true" before the "cdvue" command.
+
 ## Built With
 
 * QDox - A parser for Java files
